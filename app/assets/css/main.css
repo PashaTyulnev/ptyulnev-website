@@ -1,0 +1,129 @@
+@import 'tailwindcss';
+
+/* ---------- Design tokens (Tailwind v4 theme) ---------- */
+@theme {
+  --color-ink: #050505;
+  --color-ink-soft: #0a0a0c;
+  --color-fog: #f5f5f7;
+  --color-muted: #8a8a94;
+  --color-dim: #5e5e68;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(255, 255, 255, 0.16);
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --tracking-tightest: -0.04em;
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-fog);
+    font-family: var(--font-sans);
+    letter-spacing: -0.011em;
+    overflow-x: hidden;
+  }
+}
+
+/* ---------- Animations ---------- */
+@layer utilities {
+  /* Subtle continuous floating used by the hero content. */
+  @keyframes float-soft {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float-soft {
+    animation: float-soft 7s ease-in-out infinite;
+  }
+
+  @keyframes float-a {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  @keyframes float-b {
+    0%,
+    100% {
+      transform: translateY(-6px);
+    }
+    50% {
+      transform: translateY(6px);
+    }
+  }
+
+  @keyframes float-c {
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+    33% {
+      transform: translateY(-8px) translateX(3px);
+    }
+    66% {
+      transform: translateY(6px) translateX(-3px);
+    }
+  }
+
+  .animate-float-a {
+    animation: float-a 6.5s ease-in-out infinite;
+  }
+
+  .animate-float-b {
+    animation: float-b 8s ease-in-out infinite;
+  }
+
+  .animate-float-c {
+    animation: float-c 7.5s ease-in-out infinite;
+  }
+
+  /* Elements that animate in via GSAP start hidden to avoid a flash. */
+  .reveal-init {
+    opacity: 0;
+    transform: translateY(24px);
+    will-change: transform, opacity;
+  }
+
+  /* Flowing light pulse along hero connection lines. */
+  @keyframes line-pulse {
+    from {
+      stroke-dashoffset: 100;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .animate-line-pulse {
+    stroke-dasharray: 8 92;
+    animation: line-pulse 1.4s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-soft,
+  .animate-float-a,
+  .animate-float-b,
+  .animate-float-c,
+  .animate-line-pulse {
+    animation: none !important;
+  }
+}
