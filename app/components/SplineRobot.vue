@@ -8,7 +8,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
  * already tracks the mouse with its head inside the Spline scene, so this
  * component simply mounts it full-bleed and centered behind the hero content.
  */
-const SCENE_URL = 'https://prod.spline.design/HcLO1JD9dfeNWdut/scene.splinecode'
+const SCENE_URL = 'https://prod.spline.design/hwnITsxvyRhIJgsE/scene.splinecode'
 
 const isLoaded = ref(false)
 const container = ref<HTMLElement | null>(null)

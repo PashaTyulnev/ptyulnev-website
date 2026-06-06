@@ -16,7 +16,6 @@ const leftCards: ServiceCardItem[] = [
     description: 'Manuelle Abläufe eliminieren und Zeit zurückgewinnen.',
     anchor: '#leistungen',
     icon: 'automation',
-    floatClass: 'animate-float-a',
   },
   {
     id: 'ai',
@@ -24,7 +23,6 @@ const leftCards: ServiceCardItem[] = [
     description: 'Intelligenz dort einsetzen, wo sie echten Nutzen schafft.',
     anchor: '#leistungen',
     icon: 'ai',
-    floatClass: 'animate-float-b',
   },
   {
     id: 'website',
@@ -32,7 +30,6 @@ const leftCards: ServiceCardItem[] = [
     description: 'Hochwertige Auftritte, die Vertrauen schaffen.',
     anchor: '#leistungen',
     icon: 'website',
-    floatClass: 'animate-float-c',
   },
 ]
 
@@ -43,7 +40,6 @@ const rightCards: ServiceCardItem[] = [
     description: 'Individuelle Anwendungen für echte Geschäftsprozesse.',
     anchor: '#leistungen',
     icon: 'webapp',
-    floatClass: 'animate-float-b',
   },
   {
     id: 'systems',
@@ -51,7 +47,6 @@ const rightCards: ServiceCardItem[] = [
     description: 'Bestehende Tools nahtlos miteinander verknüpfen.',
     anchor: '#leistungen',
     icon: 'systems',
-    floatClass: 'animate-float-c',
   },
   {
     id: 'consulting',
@@ -59,7 +54,6 @@ const rightCards: ServiceCardItem[] = [
     description: 'Architektur und Entscheidungen, die langfristig tragen.',
     anchor: '#leistungen',
     icon: 'consulting',
-    floatClass: 'animate-float-a',
   },
 ]
 
@@ -199,7 +193,6 @@ onMounted(() => {
             :key="card.id"
             data-reveal
             class="reveal-init pointer-events-auto"
-            :class="card.floatClass"
           >
             <ServiceCard
               v-bind="card"
@@ -218,7 +211,6 @@ onMounted(() => {
             :key="card.id"
             data-reveal
             class="reveal-init pointer-events-auto"
-            :class="card.floatClass"
           >
             <ServiceCard
               v-bind="card"
@@ -239,7 +231,6 @@ onMounted(() => {
             :key="`md-${card.id}`"
             data-reveal
             class="reveal-init pointer-events-auto"
-            :class="card.floatClass"
           >
             <ServiceCard
               v-bind="card"
@@ -257,7 +248,6 @@ onMounted(() => {
             :key="`md-${card.id}`"
             data-reveal
             class="reveal-init pointer-events-auto"
-            :class="card.floatClass"
           >
             <ServiceCard
               v-bind="card"
@@ -275,7 +265,6 @@ onMounted(() => {
           :key="`sm-${card.id}`"
           data-reveal
           class="reveal-init pointer-events-auto"
-          :class="card.floatClass"
         >
           <ServiceCard v-bind="card" />
         </div>

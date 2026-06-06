@@ -54,10 +54,23 @@ const currentYear = new Date().getFullYear()
       </div>
 
       <footer
-        class="mt-14 flex flex-col items-center justify-between gap-3 text-sm text-dim sm:flex-row"
+        class="mt-14 flex flex-col items-center justify-between gap-4 text-sm text-dim sm:flex-row"
       >
         <span>© {{ currentYear }} Pavel Tyulnev · ptyulnev.de</span>
-        <span>Digitalisierung · Automatisierung · KI</span>
+        <nav class="flex items-center gap-6">
+          <NuxtLink
+            to="/impressum"
+            class="transition-colors duration-150 hover:text-fog"
+          >
+            Impressum
+          </NuxtLink>
+          <NuxtLink
+            to="/datenschutz"
+            class="transition-colors duration-150 hover:text-fog"
+          >
+            Datenschutz
+          </NuxtLink>
+        </nav>
       </footer>
     </div>
   </section>

@@ -15,7 +15,6 @@ export interface ServiceCardItem {
   description: string
   anchor: string
   icon: ServiceIcon
-  floatClass: string
 }
 
 defineProps<ServiceCardItem>()

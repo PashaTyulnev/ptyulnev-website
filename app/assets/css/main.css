@@ -35,66 +35,6 @@
 
 /* ---------- Animations ---------- */
 @layer utilities {
-  /* Subtle continuous floating used by the hero content. */
-  @keyframes float-soft {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  .animate-float-soft {
-    animation: float-soft 7s ease-in-out infinite;
-  }
-
-  @keyframes float-a {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-12px);
-    }
-  }
-
-  @keyframes float-b {
-    0%,
-    100% {
-      transform: translateY(-6px);
-    }
-    50% {
-      transform: translateY(6px);
-    }
-  }
-
-  @keyframes float-c {
-    0%,
-    100% {
-      transform: translateY(0) translateX(0);
-    }
-    33% {
-      transform: translateY(-8px) translateX(3px);
-    }
-    66% {
-      transform: translateY(6px) translateX(-3px);
-    }
-  }
-
-  .animate-float-a {
-    animation: float-a 6.5s ease-in-out infinite;
-  }
-
-  .animate-float-b {
-    animation: float-b 8s ease-in-out infinite;
-  }
-
-  .animate-float-c {
-    animation: float-c 7.5s ease-in-out infinite;
-  }
-
   /* Elements that animate in via GSAP start hidden to avoid a flash. */
   .reveal-init {
     opacity: 0;
@@ -119,10 +59,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-float-soft,
-  .animate-float-a,
-  .animate-float-b,
-  .animate-float-c,
   .animate-line-pulse {
     animation: none !important;
   }
