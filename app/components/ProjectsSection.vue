@@ -13,31 +13,31 @@ interface CaseStudy {
 
 const projects: CaseStudy[] = [
   {
-    sector: 'Sicherheitsunternehmen',
+    sector: 'SecureTime',
     problem:
-      'Dienstpläne, Einsatznachweise und Zeiterfassung wurden manuell in Excel gepflegt — fehleranfällig und zeitaufwendig.',
+      'Dienstpläne, Zeiterfassung und Einsatznachweise wurden manuell in Excel gepflegt — fehleranfällig, unübersichtlich und schwer skalierbar.',
     solution:
-      'Eine individuelle Web-Anwendung für automatisierte Dienstplanung, digitale Zeiterfassung und Reporting auf Knopfdruck.',
+      'Eine individuelle Web-Anwendung für Sicherheitsdienste mit Schichtplanung, Mitarbeiterverwaltung, digitaler Zeiterfassung, Reporting und PDF-Auswertungen.',
     result:
-      'Rund 15 Stunden manuelle Arbeit pro Woche eingespart und deutlich weniger Planungsfehler.',
+      'Weniger manuelle Planung, weniger Fehler und ein klarer Überblick über Mitarbeiter, Objekte, Schichten und Arbeitszeiten.',
   },
   {
-    sector: 'Agentur',
+    sector: 'ParkingSoft',
     problem:
-      'Angebote und Rechnungen mussten manuell aus mehreren Tools zusammengetragen werden.',
+      'Parkplatzbuchungen, Kundendaten und Verfügbarkeiten mussten digital sauber abgebildet und für den Alltag einfach bedienbar gemacht werden.',
     solution:
-      'Ein automatisierter Workflow, der CRM, Zeiterfassung und Buchhaltung miteinander verbindet.',
+      'Eine moderne Web-Anwendung für Parkplatzverwaltung mit Buchungsprozess, Verwaltungsoberfläche, REST-API-Anbindung und klarer Benutzerführung.',
     result:
-      'Angebotserstellung von Stunden auf Minuten reduziert — bei konsistenten Daten über alle Systeme.',
+      'Ein digitaler Ablauf von der Buchung bis zur Verwaltung — schneller, übersichtlicher und weniger abhängig von manueller Bearbeitung.',
   },
   {
-    sector: 'Dienstleister',
+    sector: 'Shopware Plugins',
     problem:
-      'Eingehende Dokumente mussten manuell gesichtet, ausgelesen und kategorisiert werden.',
+      'Shopware-Prozesse wie Produktdaten, Bestellungen, Schnittstellen oder wiederkehrende Admin-Aufgaben waren zu manuell oder nicht passend automatisiert.',
     solution:
-      'Eine KI-gestützte Verarbeitung, die relevante Daten automatisch extrahiert und korrekt zuordnet.',
+      'Individuelle Shopware-Erweiterungen und Integrationen mit API-Anbindungen, Automatisierungen, Admin-Modulen und sauberer Backend-Logik.',
     result:
-      'Bearbeitungszeit um rund 70 % gesenkt und die Fehlerquote spürbar reduziert.',
+      'Weniger manuelle Arbeit im Shop-Alltag, stabilere Prozesse und Erweiterungen, die exakt zum bestehenden Business passen.',
   },
 ]
 
@@ -58,7 +58,7 @@ const facets: { key: keyof CaseStudy; label: string }[] = [
       <SectionHeading
         eyebrow="Projekte"
         title="Gelöste Probleme, nicht nur Software."
-        lead="Jedes Projekt beginnt mit einer konkreten Herausforderung — und endet mit einem messbaren Nutzen."
+        lead="Aus manuellen Abläufen, verstreuten Daten und wiederkehrenden Aufgaben entstehen digitale Lösungen mit messbarem Nutzen."
       />
 
       <div class="mt-14 flex flex-col gap-4">
@@ -93,7 +93,7 @@ const facets: { key: keyof CaseStudy; label: string }[] = [
       </div>
 
       <p class="mt-6 text-sm text-dim">
-        Anonymisierte Praxisbeispiele. Reale Referenzen auf Anfrage.
+        Ausgewählte Projekte. Weitere Details gerne auf Anfrage.
       </p>
     </div>
   </section>
