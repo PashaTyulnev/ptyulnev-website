@@ -2,6 +2,7 @@
 const navItems = [
   { label: 'Leistungen', href: '/#leistungen' },
   { label: 'Projekte', href: '/#projekte' },
+  { label: 'Templates', href: '/templates' },
   { label: 'Kontakt', href: '/#kontakt' },
 ]
 </script>

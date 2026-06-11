@@ -2,6 +2,10 @@
 import { computed, onMounted, ref } from 'vue'
 import type { ServiceCardItem } from '~/components/ServiceCard.vue'
 
+type BgVariant = 'robot' | 'gol' | 'eco'
+const bgVariant = ref<BgVariant>('robot')
+const bgSeed    = ref(0x9e3779b9)
+
 /**
  * Hero with the Spline robot as the visual centre, framed by six floating
  * service cards. Hovering a card draws an animated data-stream line to the
@@ -93,6 +97,10 @@ function onCardDeactivate(): void {
 const { $gsap } = useNuxtApp()
 
 onMounted(() => {
+  const r = Math.random()
+  bgVariant.value = r < 0.333 ? 'robot' : r < 0.667 ? 'gol' : 'eco'
+  bgSeed.value    = (Math.random() * 0xffffffff) >>> 0
+
   if (!root.value) return
 
   const targets = root.value.querySelectorAll<HTMLElement>('[data-reveal]')
@@ -118,7 +126,21 @@ onMounted(() => {
     ref="root"
     class="relative flex min-h-screen flex-col overflow-hidden bg-ink"
   >
-    <SplineRobot />
+    <!-- Background — randomly robot, Game of Life, or Particle Ecosystem -->
+    <SplineRobot v-if="bgVariant === 'robot'" />
+    <div v-else class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <ClientOnly>
+        <TemplatesGameOfLifeBackground
+          v-if="bgVariant === 'gol'"
+          :seed="bgSeed"
+        />
+        <TemplatesParticleEcosystemBackground
+          v-else
+          :seed="bgSeed"
+        />
+      </ClientOnly>
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/40 to-ink/90" />
+    </div>
 
     <!-- Animated data-stream line (desktop only). -->
     <svg
