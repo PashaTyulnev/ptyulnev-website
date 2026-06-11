@@ -26,6 +26,8 @@ const CELL_SIZE = 6
 const MAX_DPR   = 2
 const STEP_INTERVAL_MS = 100
 const RESEED_INTERVAL_MS = 22000
+const CLICK_RADIUS = 4
+const CLICK_COOLDOWN_MS = 1000
 
 // GLOW_STRENGTH: overall intensity and radius of the soft bloom in the shader.
 const GLOW_STRENGTH = 3.2
@@ -576,6 +578,53 @@ function createSimulation(element: HTMLCanvasElement): Simulation {
 
   createState(currentSeed)
 
+  let lastClickTime = -Infinity
+
+  function handleClick(event: MouseEvent): void {
+    const now = performance.now()
+    if (now - lastClickTime < CLICK_COOLDOWN_MS) return
+
+    const rect = element.getBoundingClientRect()
+    if (
+      event.clientX < rect.left || event.clientX > rect.right ||
+      event.clientY < rect.top  || event.clientY > rect.bottom
+    ) return
+
+    lastClickTime = now
+
+    const canvasX = event.clientX - rect.left
+    const canvasY = event.clientY - rect.top
+    const cssWidth  = element.clientWidth  || 1
+    const cssHeight = element.clientHeight || 1
+
+    const centerX = Math.floor((canvasX / cssWidth) * gridWidth)
+    // readPixels y=0 is screen bottom; CSS y=0 is screen top → flip Y
+    const centerY = Math.floor((1 - canvasY / cssHeight) * gridHeight)
+
+    const pixels = new Uint8Array(gridWidth * gridHeight * 4)
+    gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffers[front])
+    gl.readPixels(0, 0, gridWidth, gridHeight, gl.RGBA, gl.UNSIGNED_BYTE, pixels)
+
+    for (let dy = -CLICK_RADIUS; dy <= CLICK_RADIUS; dy++) {
+      for (let dx = -CLICK_RADIUS; dx <= CLICK_RADIUS; dx++) {
+        if (dx * dx + dy * dy > CLICK_RADIUS * CLICK_RADIUS) continue
+        if (Math.random() < 0.45) continue
+        const gx  = ((centerX + dx) % gridWidth  + gridWidth)  % gridWidth
+        const gy  = ((centerY + dy) % gridHeight + gridHeight) % gridHeight
+        const idx = (gy * gridWidth + gx) * 4
+        pixels[idx]     = 255 // alive
+        pixels[idx + 1] = 255 // instant heat for glow
+        pixels[idx + 3] = 255
+      }
+    }
+
+    gl.bindTexture(gl.TEXTURE_2D, textures[front])
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gridWidth, gridHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, pixels)
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null)
+  }
+
+  window.addEventListener('click', handleClick)
+
   let animationFrame = 0
   let lastStep = performance.now()
   let lastReseed = performance.now()
@@ -628,6 +677,7 @@ function createSimulation(element: HTMLCanvasElement): Simulation {
       cancelAnimationFrame(animationFrame)
       cancelAnimationFrame(resizeFrame)
       resizeObserver.disconnect()
+      window.removeEventListener('click', handleClick)
       disposeState()
       gl.deleteProgram(updateProgram)
       gl.deleteProgram(renderProgram)

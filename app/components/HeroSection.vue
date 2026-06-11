@@ -179,8 +179,8 @@ onMounted(() => {
     <div
       class="pointer-events-none relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-6 pb-10 pt-24 lg:px-10"
     >
-      <!-- Headline -->
-      <div class="flex flex-col items-center text-center">
+      <!-- Headline: always on mobile; on md+ only for the robot variant (other variants place it between the cards) -->
+      <div class="flex flex-col items-center text-center" :class="bgVariant !== 'robot' ? 'md:hidden' : ''">
         <span
           data-reveal
           class="reveal-init mb-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur-sm"
@@ -224,8 +224,37 @@ onMounted(() => {
           </div>
         </div>
 
-        <!-- Centre gap for the robot -->
-        <div class="min-w-[22rem] flex-1" aria-hidden="true" />
+        <!-- Centre: robot gap or title for non-robot variants -->
+        <div
+          v-if="bgVariant === 'robot'"
+          class="min-w-[22rem] flex-1"
+          aria-hidden="true"
+        />
+        <div
+          v-else
+          class="flex min-w-[22rem] flex-1 flex-col items-center justify-center text-center px-6"
+        >
+          <span
+            data-reveal
+            class="reveal-init mb-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur-sm"
+          >
+            <span class="size-1.5 rounded-full bg-fog/80" />
+            Digitalisierung · Automatisierung · KI
+          </span>
+          <h1
+            data-reveal
+            class="reveal-init max-w-[18ch] text-3xl font-semibold leading-[1.06] tracking-[-0.04em] text-fog sm:text-5xl lg:text-[3.75rem]"
+          >
+            Software, die Arbeit spart.
+          </h1>
+          <p
+            data-reveal
+            class="reveal-init mt-5 max-w-[44ch] text-sm text-muted sm:text-base"
+          >
+            Ich unterstütze Unternehmen bei der Entwicklung von Webanwendungen,
+            Automatisierungslösungen und KI-gestützten Prozessen.
+          </p>
+        </div>
 
         <div class="flex w-[15.5rem] shrink-0 flex-col gap-5 xl:w-[17rem]">
           <div
@@ -262,7 +291,36 @@ onMounted(() => {
           </div>
         </div>
 
-        <div class="min-w-[14rem] flex-1" aria-hidden="true" />
+        <div
+          v-if="bgVariant === 'robot'"
+          class="min-w-[14rem] flex-1"
+          aria-hidden="true"
+        />
+        <div
+          v-else
+          class="flex min-w-[14rem] flex-1 flex-col items-center justify-center text-center px-4"
+        >
+          <span
+            data-reveal
+            class="reveal-init mb-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur-sm"
+          >
+            <span class="size-1.5 rounded-full bg-fog/80" />
+            Digitalisierung · Automatisierung · KI
+          </span>
+          <h1
+            data-reveal
+            class="reveal-init max-w-[18ch] text-3xl font-semibold leading-[1.06] tracking-[-0.04em] text-fog sm:text-5xl lg:text-[3.75rem]"
+          >
+            Software, die Arbeit spart.
+          </h1>
+          <p
+            data-reveal
+            class="reveal-init mt-5 max-w-[44ch] text-sm text-muted sm:text-base"
+          >
+            Ich unterstütze Unternehmen bei der Entwicklung von Webanwendungen,
+            Automatisierungslösungen und KI-gestützten Prozessen.
+          </p>
+        </div>
 
         <div class="flex w-[13.5rem] shrink-0 flex-col gap-4">
           <div
