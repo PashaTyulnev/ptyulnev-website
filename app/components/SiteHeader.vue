@@ -3,6 +3,7 @@ const navItems = [
   { label: 'Leistungen', href: '/#leistungen' },
   { label: 'Projekte', href: '/#projekte' },
   { label: 'Templates', href: '/templates' },
+  { label: 'CV', href: '/cv/' },
   { label: 'Kontakt', href: '/#kontakt' },
 ]
 </script>
