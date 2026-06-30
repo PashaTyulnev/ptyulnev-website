@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbeitszeugnis – Pavel Tyulnev · ito consult GmbH</title>
+    <meta name="description" content="Arbeitszeugnis: Pavel Tyulnev, Software-Entwickler Backend, ito consult GmbH Dresden, 15.03.2021 – 31.10.2025.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#09090e">
+    <link rel="canonical" href="https://cv.it-horizon.de/arbeitszeugnis.html">
+    <link rel="alternate" hreflang="de" href="https://cv.it-horizon.de/arbeitszeugnis.html">
+    <link rel="alternate" hreflang="en" href="https://cv.it-horizon.de/arbeitszeugnis.html">
+    <link rel="alternate" hreflang="x-default" href="https://cv.it-horizon.de/arbeitszeugnis.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090e;
+            --surface: rgba(255, 255, 255, 0.035);
+            --border: rgba(255, 255, 255, 0.07);
+            --border-h: rgba(255, 255, 255, 0.13);
+            --text: #ededf2;
+            --text-2: #b7b7c5;
+            --text-3: #7d7d8e;
+            --accent: #5b9cf6;
+            --accent-2: #a78bfa;
+            --accent-g: linear-gradient(135deg, #5b9cf6 0%, #a78bfa 100%);
+            --gold: #c9a96e;
+            --radius: 20px;
+            --blur: blur(28px);
+            --page-gutter: clamp(18px, 4vw, 56px);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.65;
+        }
+
+        .ambient {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .ambient span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+        }
+        .ambient span:nth-child(1) {
+            width: min(90vw, 900px);
+            height: min(90vw, 900px);
+            top: -20%;
+            right: -15%;
+            background: radial-gradient(circle, #c9a96e 0%, transparent 70%);
+            opacity: 0.09;
+        }
+        .ambient span:nth-child(2) {
+            width: min(70vw, 650px);
+            height: min(70vw, 650px);
+            bottom: -15%;
+            left: -10%;
+            background: radial-gradient(circle, #a78bfa 0%, transparent 70%);
+            opacity: 0.08;
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 18px;
+            right: var(--page-gutter);
+            z-index: 10;
+            display: flex;
+            gap: 4px;
+            padding: 4px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+        }
+        .lang-switch button {
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            background: transparent;
+            color: var(--text-3);
+            transition: background 0.2s, color 0.2s;
+        }
+        .lang-switch button:hover { color: var(--text); }
+        .lang-switch button[aria-pressed="true"] {
+            background: rgba(91, 156, 246, 0.22);
+            color: var(--accent);
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 32px var(--page-gutter) 72px;
+        }
+
+        .top-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            background: rgba(91, 156, 246, 0.08);
+            border: 1px solid rgba(91, 156, 246, 0.22);
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .back:hover {
+            background: rgba(91, 156, 246, 0.14);
+            border-color: rgba(91, 156, 246, 0.35);
+        }
+
+        .badge {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: rgba(201, 169, 110, 0.1);
+            border: 1px solid rgba(201, 169, 110, 0.25);
+        }
+
+        .doc {
+            background: var(--surface);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: clamp(28px, 4vw, 44px) clamp(22px, 4vw, 40px);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+        }
+        .doc::before {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 72px;
+            border-radius: 3px;
+            background: var(--accent-g);
+            margin-bottom: 28px;
+        }
+
+        .doc h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 38px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            margin-bottom: 8px;
+            background: linear-gradient(140deg, #f0f0f5 35%, #8a8a9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .doc-sub {
+            font-size: 14px;
+            color: var(--text-2);
+            font-weight: 400;
+            margin-bottom: 28px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .doc-sub strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .doc p {
+            font-size: 14.5px;
+            color: var(--text-2);
+            font-weight: 300;
+            margin-bottom: 1.1em;
+        }
+
+        .doc p.lead {
+            font-size: 15px;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .doc h2 {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin: 28px 0 14px;
+        }
+
+        .doc ul {
+            list-style: none;
+            margin: 0 0 22px;
+            padding: 0;
+        }
+
+        .doc li {
+            position: relative;
+            padding: 10px 0 10px 22px;
+            font-size: 14px;
+            color: var(--text-2);
+            font-weight: 300;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .doc li:last-child { border-bottom: none; }
+
+        .doc li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 17px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-g);
+        }
+
+        .signature-block {
+            margin-top: 36px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .signature-block .place-date {
+            font-size: 14px;
+            color: var(--text-2);
+            margin-bottom: 24px;
+        }
+
+        .signature-block .company {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .signature-block .signer {
+            font-size: 14px;
+            color: var(--text-2);
+            margin-top: 20px;
+        }
+        .signature-block .signer .role {
+            font-size: 13px;
+            color: var(--text-3);
+            margin-top: 2px;
+        }
+
+        @media print {
+            .ambient, .top-bar .badge, .back, .lang-switch { display: none !important; }
+            body { background: #fff; color: #111; }
+            .doc {
+                background: #fff;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+            }
+            .doc p, .doc li, .doc-sub, .signature-block { color: #222; }
+            .doc h1 { -webkit-text-fill-color: #111; color: #111; }
+        }
+    </style>
+</head>
+<body>
+<div class="lang-switch" role="group" aria-label="Language">
+    <button type="button" id="lang-de" aria-pressed="true">DE</button>
+    <button type="button" id="lang-en" aria-pressed="false">EN</button>
+</div>
+
+<div class="ambient"><span></span><span></span></div>
+
+<div class="wrap">
+    <div class="top-bar">
+        <a class="back" href="index.html" data-i18n="z_back">← Zurück zum Lebenslauf</a>
+        <span class="badge" data-i18n="z_badge">Offizielles Zeugnis</span>
+    </div>
+
+    <article class="doc" id="doc-article" lang="de">
+        <h1 data-i18n="z_title">Arbeitszeugnis</h1>
+        <p class="doc-sub" data-i18n-html="z_sub">
+            <strong>Herr Pavel Tyulnev</strong>, geboren am 25.06.1995, war in der Zeit vom <strong>15.03.2021</strong> bis zum <strong>31.10.2025</strong> bei der <strong>ito consult GmbH</strong> in Dresden als <strong>Software-Entwickler im Backend-Bereich</strong> tätig.
+        </p>
+
+        <p data-i18n="z_company">Die ito consult GmbH, mit Sitz in Dresden, ist ein mittelständisches Unternehmen in der IT-Branche. Sie bietet umfassende Lösungen in den Bereichen IT- und Netzwerksicherheit an, entwickelt maßgeschneiderte Software, betreibt Webseiten und Onlineshops für Kunden im gesamten DACH-Bereich.</p>
+
+        <p class="lead" data-i18n="z_lead">Herr Tyulnev war in seiner Position für eine Vielzahl von Aufgaben zuständig. Zu seinen Hauptaufgaben zählten:</p>
+
+        <ul>
+            <li data-i18n="z_li1">Analyse von Problemen und Entgegennahme von Anforderungen</li>
+            <li data-i18n="z_li2">Architekturen, Komponenten, Schnittstellen, Algorithmen und Programmabläufe entwerfen</li>
+            <li data-i18n="z_li3">Entwicklung von PHP-Anwendungen, Integration von APIs und externen Diensten in die Webanwendungen</li>
+            <li data-i18n="z_li4">Verarbeitung der Daten aus dem Datenmodell unter Verwendung von Template Engines</li>
+            <li data-i18n="z_li5">Versionierung des Quellcode git</li>
+            <li data-i18n="z_li6">Testen von Quellcodes</li>
+            <li data-i18n="z_li7">Dokumentation aller Arbeitsschritte</li>
+            <li data-i18n="z_li8">Zusammenarbeit mit Entwicklern und Kommunikation mit dem gesamten Team</li>
+            <li data-i18n="z_li9">Erstellung und Pflege von relationalen Datenbanken, Optimierung von Datenbankabfragen für eine hohe Leistungsfähigkeit der Anwendungen</li>
+            <li data-i18n="z_li10">Bearbeitung und Schnitt von Videos für verschiedene Projekte und Plattformen, Einbindung von Videos in die Webanwendungen</li>
+            <li data-i18n="z_li11">Aufnahme und Bearbeitung von Fotos für Webseiten und als Marketingmaterial</li>
+            <li data-i18n="z_li12">Wartungsprozess Termifixus und Kundensupport bei Terminals</li>
+        </ul>
+
+        <p data-i18n="z_e1">Herr Tyulnev verfügte über sehr gute und fundierte Kenntnisse, die er sicher und erfolgreich in der Praxis anwendete. Sein Wissen hielt er stets auf dem neuesten Stand und erweiterte es eigenständig. Sein Urteilsvermögen nutzte er jederzeit effektiv und mit sicherem Urteilsvermögen. Er nahm regelmäßig und mit großem Engagement an internen sowie externen Weiterbildungen teil.</p>
+
+        <p data-i18n="z_e2">Er arbeitete stets zuverlässig und führte die ihm übertragenen Aufgaben immer sorgfältig, planvoll und systematisch aus. Herr Tyulnev zeigte eine sehr ausgeprägte Selbstständigkeit und erledigte seine Aufgaben mit großer Sorgfalt. Hinsichtlich seines Arbeitserfolges überzeugte er durch eine hervorragende Arbeitsqualität und erzielte Ergebnisse, die unseren Anforderungen in jeder Hinsicht und in bester Weise entsprachen. Auch bei wechselnden Anforderungen arbeitete er engagiert und flexibel und führte die ihm übertragenen Aufgaben gewissenhaft und zuverlässig aus.</p>
+
+        <p data-i18n="z_e3">Er zeigte eine gute Auffassungsgabe und erfasste komplexe Zusammenhänge zügig. Herr Tyulnev analysierte Sachverhalte sorgfältig und fand zweckmäßige sowie praktikable Lösungen. Dabei bewies er ein analytisches und strategisches Denkvermögen und trug mit durchdachten, kreativen Impulsen regelmäßig zur Optimierung der Arbeitsabläufe bei.</p>
+
+        <p data-i18n="z_e4">In anspruchsvollen Situationen zeigte Herr Tyulnev eine ausreichende Belastbarkeit und arbeitete auch unter Druck zuverlässig weiter. In Auseinandersetzungen suchte er nach Lösungen, die er mit Umsicht und Sachlichkeit vertrat. Mit Kritik ging er angemessen um und zeigte dabei Bereitschaft, sich mit unterschiedlichen Standpunkten auseinanderzusetzen.</p>
+
+        <p data-i18n="z_e5">Sein Verhalten gegenüber Vorgesetzten und Mitarbeitern war jederzeit einwandfrei und von Respekt, Teamgeist und Zuverlässigkeit geprägt. Er kommunizierte klar und zielgerichtet und förderte aktiv die stets gute Zusammenarbeit. Herr Tyulnev verhielt sich loyal und arbeitete zum Wohle des Unternehmens. Im Umgang mit Kunden war er stets freundlich, höflich und sicher und wurde von diesen sehr geschätzt.</p>
+
+        <p data-i18n="z_e6">Zusammenfassend waren wir mit seinen Leistungen in jeder Hinsicht stets voll zufrieden. Herr Tyulnev verlässt unser Unternehmen zum 31.10.2025 auf eigenen Wunsch. Wir danken ihm für die jederzeit guten Leistungen und wünschen ihm für seinen weiteren Berufs- und Lebensweg alles Gute und weiterhin viel Erfolg.</p>
+
+        <div class="signature-block">
+            <p class="place-date" data-i18n="z_place">Dresden, 31.10.2025</p>
+            <p class="company">ito consult GmbH</p>
+            <div class="signer">
+                Marcus Kupke
+                <div class="role" data-i18n="z_role">Teamleiter</div>
+            </div>
+        </div>
+    </article>
+</div>
+
+<script>
+(function () {
+    var STR = {
+        de: {
+            doc_title: 'Arbeitszeugnis – Pavel Tyulnev · ito consult GmbH',
+            meta_desc: 'Arbeitszeugnis: Pavel Tyulnev, Software-Entwickler Backend, ito consult GmbH Dresden, 15.03.2021 – 31.10.2025.',
+            z_back: '← Zurück zum Lebenslauf',
+            z_badge: 'Offizielles Zeugnis',
+            z_title: 'Arbeitszeugnis',
+            z_sub: '<strong>Herr Pavel Tyulnev</strong>, geboren am 25.06.1995, war in der Zeit vom <strong>15.03.2021</strong> bis zum <strong>31.10.2025</strong> bei der <strong>ito consult GmbH</strong> in Dresden als <strong>Software-Entwickler im Backend-Bereich</strong> tätig.',
+            z_company: 'Die ito consult GmbH, mit Sitz in Dresden, ist ein mittelständisches Unternehmen in der IT-Branche. Sie bietet umfassende Lösungen in den Bereichen IT- und Netzwerksicherheit an, entwickelt maßgeschneiderte Software, betreibt Webseiten und Onlineshops für Kunden im gesamten DACH-Bereich.',
+            z_lead: 'Herr Tyulnev war in seiner Position für eine Vielzahl von Aufgaben zuständig. Zu seinen Hauptaufgaben zählten:',
+            z_li1: 'Analyse von Problemen und Entgegennahme von Anforderungen',
+            z_li2: 'Architekturen, Komponenten, Schnittstellen, Algorithmen und Programmabläufe entwerfen',
+            z_li3: 'Entwicklung von PHP-Anwendungen, Integration von APIs und externen Diensten in die Webanwendungen',
+            z_li4: 'Verarbeitung der Daten aus dem Datenmodell unter Verwendung von Template Engines',
+            z_li5: 'Versionierung des Quellcode git',
+            z_li6: 'Testen von Quellcodes',
+            z_li7: 'Dokumentation aller Arbeitsschritte',
+            z_li8: 'Zusammenarbeit mit Entwicklern und Kommunikation mit dem gesamten Team',
+            z_li9: 'Erstellung und Pflege von relationalen Datenbanken, Optimierung von Datenbankabfragen für eine hohe Leistungsfähigkeit der Anwendungen',
+            z_li10: 'Bearbeitung und Schnitt von Videos für verschiedene Projekte und Plattformen, Einbindung von Videos in die Webanwendungen',
+            z_li11: 'Aufnahme und Bearbeitung von Fotos für Webseiten und als Marketingmaterial',
+            z_li12: 'Wartungsprozess Termifixus und Kundensupport bei Terminals',
+            z_e1: 'Herr Tyulnev verfügte über sehr gute und fundierte Kenntnisse, die er sicher und erfolgreich in der Praxis anwendete. Sein Wissen hielt er stets auf dem neuesten Stand und erweiterte es eigenständig. Sein Urteilsvermögen nutzte er jederzeit effektiv und mit sicherem Urteilsvermögen. Er nahm regelmäßig und mit großem Engagement an internen sowie externen Weiterbildungen teil.',
+            z_e2: 'Er arbeitete stets zuverlässig und führte die ihm übertragenen Aufgaben immer sorgfältig, planvoll und systematisch aus. Herr Tyulnev zeigte eine sehr ausgeprägte Selbstständigkeit und erledigte seine Aufgaben mit großer Sorgfalt. Hinsichtlich seines Arbeitserfolges überzeugte er durch eine hervorragende Arbeitsqualität und erzielte Ergebnisse, die unseren Anforderungen in jeder Hinsicht und in bester Weise entsprachen. Auch bei wechselnden Anforderungen arbeitete er engagiert und flexibel und führte die ihm übertragenen Aufgaben gewissenhaft und zuverlässig aus.',
+            z_e3: 'Er zeigte eine gute Auffassungsgabe und erfasste komplexe Zusammenhänge zügig. Herr Tyulnev analysierte Sachverhalte sorgfältig und fand zweckmäßige sowie praktikable Lösungen. Dabei bewies er ein analytisches und strategisches Denkvermögen und trug mit durchdachten, kreativen Impulsen regelmäßig zur Optimierung der Arbeitsabläufe bei.',
+            z_e4: 'In anspruchsvollen Situationen zeigte Herr Tyulnev eine ausreichende Belastbarkeit und arbeitete auch unter Druck zuverlässig weiter. In Auseinandersetzungen suchte er nach Lösungen, die er mit Umsicht und Sachlichkeit vertrat. Mit Kritik ging er angemessen um und zeigte dabei Bereitschaft, sich mit unterschiedlichen Standpunkten auseinanderzusetzen.',
+            z_e5: 'Sein Verhalten gegenüber Vorgesetzten und Mitarbeitern war jederzeit einwandfrei und von Respekt, Teamgeist und Zuverlässigkeit geprägt. Er kommunizierte klar und zielgerichtet und förderte aktiv die stets gute Zusammenarbeit. Herr Tyulnev verhielt sich loyal und arbeitete zum Wohle des Unternehmens. Im Umgang mit Kunden war er stets freundlich, höflich und sicher und wurde von diesen sehr geschätzt.',
+            z_e6: 'Zusammenfassend waren wir mit seinen Leistungen in jeder Hinsicht stets voll zufrieden. Herr Tyulnev verlässt unser Unternehmen zum 31.10.2025 auf eigenen Wunsch. Wir danken ihm für die jederzeit guten Leistungen und wünschen ihm für seinen weiteren Berufs- und Lebensweg alles Gute und weiterhin viel Erfolg.',
+            z_place: 'Dresden, 31.10.2025',
+            z_role: 'Teamleiter'
+        },
+        en: {
+            doc_title: 'Work reference – Pavel Tyulnev · ito consult GmbH',
+            meta_desc: 'Work reference: Pavel Tyulnev, backend software developer, ito consult GmbH Dresden, Mar 15, 2021 – Oct 31, 2025.',
+            z_back: '← Back to résumé',
+            z_badge: 'Official reference letter',
+            z_title: 'Employment reference',
+            z_sub: '<strong>Mr. Pavel Tyulnev</strong>, born on 25 June 1995, was employed from <strong>15 March 2021</strong> to <strong>31 October 2025</strong> at <strong>ito consult GmbH</strong> in Dresden as a <strong>backend software developer</strong>.',
+            z_company: 'ito consult GmbH, headquartered in Dresden, is a medium-sized IT company. It offers comprehensive solutions in IT and network security, develops tailor-made software, and operates websites and online shops for clients across the DACH region.',
+            z_lead: 'Mr. Tyulnev was responsible for a wide range of tasks in his role. His main duties included:',
+            z_li1: 'Analysing problems and capturing requirements',
+            z_li2: 'Designing architectures, components, interfaces, algorithms, and program flows',
+            z_li3: 'Developing PHP applications; integrating APIs and external services into web applications',
+            z_li4: 'Processing data from the data model using template engines',
+            z_li5: 'Versioning source code (Git)',
+            z_li6: 'Testing source code',
+            z_li7: 'Documenting all work steps',
+            z_li8: 'Collaborating with developers and communicating with the entire team',
+            z_li9: 'Creating and maintaining relational databases; optimising database queries for high application performance',
+            z_li10: 'Editing and cutting video for various projects and platforms; embedding video in web applications',
+            z_li11: 'Taking and editing photos for websites and marketing materials',
+            z_li12: 'Termifixus maintenance process and customer support for terminals',
+            z_e1: 'Mr. Tyulnev had very sound knowledge, which he applied confidently and successfully in practice. He kept his knowledge up to date and expanded it on his own initiative. He exercised sound judgment effectively at all times. He regularly took part in internal and external training with great commitment.',
+            z_e2: 'He was always reliable and carried out his assigned tasks carefully, in a planned and systematic manner. Mr. Tyulnev showed a high degree of independence and completed his work with great care. In terms of work results, he delivered outstanding quality and outcomes that fully met our requirements in every respect and in the best possible way. Even when requirements changed, he worked with commitment and flexibility and completed his tasks conscientiously and reliably.',
+            z_e3: 'He showed good comprehension and grasped complex relationships quickly. Mr. Tyulnev analysed matters carefully and found appropriate, workable solutions. He demonstrated analytical and strategic thinking and regularly contributed thoughtful, creative ideas to improve workflows.',
+            z_e4: 'In demanding situations, Mr. Tyulnev showed adequate resilience and continued to work reliably even under pressure. In disagreements he sought solutions and represented them with tact and objectivity. He handled criticism appropriately and showed willingness to engage with different viewpoints.',
+            z_e5: 'His conduct toward supervisors and colleagues was always impeccable, characterised by respect, team spirit, and reliability. He communicated clearly and purposefully and actively fostered consistently good cooperation. Mr. Tyulnev behaved loyally and worked in the company’s best interests. With customers he was always friendly, polite, and confident and was highly appreciated by them.',
+            z_e6: 'In summary, we were fully satisfied with his performance in every respect. Mr. Tyulnev is leaving our company on 31 October 2025 at his own request. We thank him for his consistently good performance and wish him all the best and continued success in his professional and personal future.',
+            z_place: 'Dresden, 31 October 2025',
+            z_role: 'Team lead'
+        }
+    };
+
+    function applyLang(lang) {
+        var pack = STR[lang] || STR.de;
+        document.documentElement.lang = lang === 'en' ? 'en' : 'de';
+        var art = document.getElementById('doc-article');
+        if (art) art.setAttribute('lang', lang === 'en' ? 'en' : 'de');
+        if (pack.doc_title) document.title = pack.doc_title;
+        var md = document.querySelector('meta[name="description"]');
+        if (md && pack.meta_desc) md.setAttribute('content', pack.meta_desc);
+
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+            var key = el.getAttribute('data-i18n');
+            if (key && pack[key] !== undefined) el.textContent = pack[key];
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+            var key = el.getAttribute('data-i18n-html');
+            if (key && pack[key] !== undefined) el.innerHTML = pack[key];
+        });
+
+        try {
+            localStorage.setItem('cv-lang', lang);
+        } catch (e) { /* ignore */ }
+    }
+
+    function setSwitchState(lang) {
+        var de = document.getElementById('lang-de');
+        var en = document.getElementById('lang-en');
+        if (de) de.setAttribute('aria-pressed', lang === 'de' ? 'true' : 'false');
+        if (en) en.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+    }
+
+    var initial = 'de';
+    try {
+        var s = localStorage.getItem('cv-lang');
+        if (s === 'en' || s === 'de') initial = s;
+    } catch (e) { /* ignore */ }
+
+    applyLang(initial);
+    setSwitchState(initial);
+
+    var btnDe = document.getElementById('lang-de');
+    var btnEn = document.getElementById('lang-en');
+    if (btnDe) btnDe.addEventListener('click', function () { applyLang('de'); setSwitchState('de'); });
+    if (btnEn) btnEn.addEventListener('click', function () { applyLang('en'); setSwitchState('en'); });
+})();
+</script>
+</body>
+</html>
