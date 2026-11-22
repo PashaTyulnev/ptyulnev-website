@@ -16,6 +16,7 @@ const currentYear = new Date().getFullYear()
         <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <BaseButton href="mailto:kontakt@ptyulnev.de">kontakt@ptyulnev.de</BaseButton>
           <BaseButton href="tel:+4917670583534" variant="secondary">0176 705 83 534</BaseButton>
+          <BaseButton href="https://www.linkedin.com/in/pavel-tyulnev-82327b270/" variant="secondary" target="_blank" rel="noopener me">LinkedIn</BaseButton>
         </div>
       </div>
 
@@ -23,6 +24,7 @@ const currentYear = new Date().getFullYear()
         <span>© {{ currentYear }} Pavel Tyulnev · Dresden · ptyulnev.de</span>
         <nav class="flex flex-wrap items-center justify-center gap-6">
           <NuxtLink to="/templates" class="hover:text-fog">Templates</NuxtLink>
+          <a href="https://www.linkedin.com/in/pavel-tyulnev-82327b270/" target="_blank" rel="noopener me" class="hover:text-fog">LinkedIn</a>
           <NuxtLink to="/impressum" class="hover:text-fog">Impressum</NuxtLink>
           <NuxtLink to="/datenschutz" class="hover:text-fog">Datenschutz</NuxtLink>
           <a href="/sitemap.xml" download="sitemap.xml" class="hover:text-fog">Sitemap</a>

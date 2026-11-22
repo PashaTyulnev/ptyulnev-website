@@ -21,7 +21,8 @@ useHead({
         description:
           'Softwareentwickler in Dresden. Ich digitalisiere Betriebsabläufe wie Dienstplanung, Zeiterfassung und Auswertungen, verbinde Datenquellen, entwickle für Shopware 6 und übernehme bestehende Software.',
         image: 'https://ptyulnev.de/cv/profile_image.png',
-        founder: { '@type': 'Person', name: 'Pavel Tyulnev', jobTitle: 'Softwareentwickler' },
+        sameAs: ['https://www.linkedin.com/in/pavel-tyulnev-82327b270/'],
+        founder: { '@type': 'Person', name: 'Pavel Tyulnev', jobTitle: 'Softwareentwickler', sameAs: ['https://www.linkedin.com/in/pavel-tyulnev-82327b270/'] },
         makesOffer: [
           {
             '@type': 'Offer',
