@@ -25,14 +25,14 @@ function dismiss() {
   >
     <div
       v-if="visible"
-      class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-2.5rem)] max-w-xl -translate-x-1/2 rounded-2xl border border-line-strong bg-ink-soft/90 px-5 py-4 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.7)] backdrop-blur-xl light:shadow-[0_8px_30px_-10px_rgba(10,10,15,0.25)]"
+      class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-2.5rem)] max-w-xl -translate-x-1/2 rounded-2xl border border-line-strong bg-ink-soft px-5 py-4 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.7)] light:shadow-[0_8px_30px_-10px_rgba(10,10,15,0.25)]"
       role="region"
       aria-label="Cookie-Hinweis"
     >
       <div class="flex items-start justify-between gap-4">
         <p class="text-sm leading-relaxed text-muted">
-          Diese Seite setzt keine eigenen Tracking-Cookies. Externe Dienste
-          (Spline 3D) können Verbindungen aufbauen.
+          Diese Seite setzt keine eigenen Tracking-Cookies. Schriften werden
+          von Google Fonts geladen.
           <NuxtLink
             to="/datenschutz"
             class="text-fog/70 underline underline-offset-2 transition-colors hover:text-fog"

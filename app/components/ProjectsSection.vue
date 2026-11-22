@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const root = ref<HTMLElement | null>(null)
-useScrollReveal(root)
 
 interface CaseStudy {
   sector: string
   problem: string
   solution: string
   result: string
+  url?: string
 }
 
 const projects: CaseStudy[] = [
   {
     sector: 'SecureTime',
+    url: 'https://securetime.de',
     problem:
       'Dienstpläne, Zeiterfassung und Einsatznachweise wurden manuell in Excel gepflegt — fehleranfällig, unübersichtlich und schwer skalierbar.',
     solution:
@@ -22,13 +20,23 @@ const projects: CaseStudy[] = [
       'Weniger manuelle Planung, weniger Fehler in der Abrechnung und ein tagesaktueller Überblick über Mitarbeiter, Objekte, Schichten und Arbeitszeiten.',
   },
   {
+    sector: 'Parkingplan',
+    url: 'https://parkingplan.de',
+    problem:
+      'Parkplatzbetreiber nehmen Buchungen per Telefon, E-Mail und Excel an und verlieren dabei schnell den Überblick über die Belegung.',
+    solution:
+      'Eine Parkplatz-Software mit Online-Buchungssystem und Verwaltungsoberfläche, die Betreiber direkt nutzen können.',
+    result:
+      'Buchungen, Belegung und Kundendaten an einer Stelle, ohne Zettelwirtschaft und doppelte Pflege.',
+  },
+  {
     sector: 'ParkingSoft',
     problem:
       'Parkplatzbuchungen, Kundendaten und Verfügbarkeiten mussten digital sauber abgebildet und für den Alltag einfach bedienbar gemacht werden.',
     solution:
       'Eine Web-Anwendung für Parkplatzverwaltung mit Buchungsprozess, Verwaltungsoberfläche und über 20 externen und internen API-Integrationen — seit mehr als 4 Jahren produktiv im Einsatz.',
     result:
-      'Über 40.000 verarbeitete Buchungen und ein durchgängig digitaler Ablauf von der Buchung bis zur Verwaltung — die Antwortzeit sank trotz wachsender Datenmenge von rund einer Minute auf etwa eine Sekunde.',
+      'Über 40.000 verarbeitete Buchungen und ein durchgängig digitaler Ablauf von der Buchung bis zur Verwaltung.',
   },
   {
     sector: 'Shopware Plugins',
@@ -51,10 +59,9 @@ const facets: { key: keyof CaseStudy; label: string }[] = [
 <template>
   <section
     id="projekte"
-    ref="root"
-    class="relative border-t border-line py-28 lg:py-36"
+    class="relative border-t border-line py-24"
   >
-    <div class="relative mx-auto w-full max-w-[1200px] px-6">
+    <div class="relative mx-auto w-full max-w-6xl px-6">
       <SectionHeading
         eyebrow="Projekte"
         title="Gelöste Probleme, nicht nur Software."
@@ -65,16 +72,24 @@ const facets: { key: keyof CaseStudy; label: string }[] = [
         <article
           v-for="project in projects"
           :key="project.sector"
-          data-reveal
-          class="reveal-init grid gap-6 rounded-2xl border border-line bg-white/[0.03] p-7 backdrop-blur-md transition-colors duration-300 hover:border-white/20 light:bg-black/[0.025] light:hover:border-black/15 lg:grid-cols-[200px_1fr] lg:gap-10 lg:p-9"
+          class="grid gap-6 rounded-2xl border border-line bg-ink-soft p-7 transition-colors duration-300 hover:border-line-strong lg:grid-cols-[200px_1fr] lg:gap-10 lg:p-9"
         >
-          <div class="flex items-start">
+          <div>
             <span
               class="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1 text-xs font-medium tracking-wide text-muted"
             >
               <span class="size-1.5 rounded-full bg-fog/70" />
               {{ project.sector }}
             </span>
+            <a
+              v-if="project.url"
+              :href="project.url"
+              target="_blank"
+              rel="noopener"
+              class="mt-3 block text-sm text-accent hover:underline"
+            >
+              {{ project.url.replace('https://', '') }} ↗
+            </a>
           </div>
 
           <dl class="grid gap-6 sm:grid-cols-3">
@@ -93,7 +108,8 @@ const facets: { key: keyof CaseStudy; label: string }[] = [
       </div>
 
       <p class="mt-6 text-sm text-dim">
-        Ausgewählte Projekte. Weitere Details gerne auf Anfrage.
+        Ausgewählte Projekte.
+        <NuxtLink to="/fallstudien" class="text-accent hover:underline">Weitere Fälle mit Vorgehen und Ergebnis →</NuxtLink>
       </p>
     </div>
   </section>

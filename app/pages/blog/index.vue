@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
-const root = ref<HTMLElement | null>(null)
-useScrollReveal(root)
 
 const { data: blogPosts } = await useBlogPosts()
 
@@ -17,21 +15,29 @@ function formatDate(date: string): string {
   }).format(new Date(date))
 }
 
+usePageSeo({
+  title: 'Blog: Notizen aus der Softwareentwicklung | Pavel Tyulnev',
+  description: 'Erfahrungen aus echten Projekten: Symfony, Shopware 6, API-Integrationen, Performance und individuelle Software für Betriebsabläufe – praxisnah erklärt.',
+  path: '/blog',
+})
+
 useHead({
-  title: 'Blog — Pavel Tyulnev',
-  link: [{ rel: 'canonical', href: 'https://ptyulnev.de/blog' }],
-  meta: [
+  script: [
     {
-      name: 'description',
-      content:
-        'Notizen zu Shopware 6, API-Integrationen, Performance und individueller Business-Software — aus echten Projekten.',
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(
+        breadcrumbJsonLd([
+          { name: 'Startseite', path: '/' },
+          { name: 'Blog', path: '/blog' },
+        ]),
+      ),
     },
   ],
 })
 </script>
 
 <template>
-  <main ref="root" class="relative pb-28 pt-32">
+  <main class="relative pb-28 pt-32">
     <div class="mx-auto w-full max-w-[1200px] px-6">
       <NuxtLink
         to="/"
@@ -50,9 +56,8 @@ useHead({
 
       <NuxtLink
         v-if="featured"
-        data-reveal
         :to="`/blog/${featured.slug}`"
-        class="reveal-init group mt-14 flex flex-col gap-5 rounded-2xl border border-line bg-white/[0.03] p-7 backdrop-blur-md transition-colors duration-300 hover:border-white/20 light:bg-black/[0.025] light:hover:border-black/15 sm:p-9"
+        class="group mt-14 flex flex-col gap-5 rounded-2xl border border-line bg-ink-soft p-7 transition-colors duration-300 hover:border-line-strong sm:p-9"
       >
         <span
           class="inline-flex w-fit items-center gap-2 rounded-full border border-line px-3 py-1 text-xs font-medium tracking-wide text-muted"
@@ -82,9 +87,8 @@ useHead({
         <NuxtLink
           v-for="post in rest"
           :key="post.slug"
-          data-reveal
           :to="`/blog/${post.slug}`"
-          class="reveal-init group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-line bg-white/[0.03] p-6 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05] light:bg-black/[0.025] light:hover:border-black/15 light:hover:bg-black/[0.04]"
+          class="group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-line bg-ink-soft p-6 transition-all duration-300 hover:border-line-strong"
         >
           <span class="text-xs font-medium uppercase tracking-[0.14em] text-dim">
             {{ post.category }}

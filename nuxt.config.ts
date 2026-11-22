@@ -14,51 +14,27 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    optimizeDeps: {
-      include: ['@splinetool/viewer', 'gsap', 'gsap/ScrollTrigger'],
-    },
-  },
-
-  vue: {
-    compilerOptions: {
-      // Treat the Spline web component as a native custom element.
-      isCustomElement: (tag) => tag === 'spline-viewer',
-    },
   },
 
   app: {
     head: {
-      title: 'Pavel Tyulnev — Shopware 6 & individuelle Business-Software | Dresden',
+      title: 'Softwareentwickler Dresden: individuelle Software & Shopware',
       htmlAttrs: { lang: 'de' },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        {
-          name: 'description',
-          content:
-            'Pavel Tyulnev — Softwareentwickler in Dresden. Shopware 6, individuelle Business-Software, API-Integrationen und Automatisierung, Bugfixing und Performance.',
-        },
+        { name: 'description', content: 'Individuelle Software für Dienstplanung, Zeiterfassung und Auswertungen, Schnittstellen und Shopware 6 – direkt aus Dresden. Bestandsaufnahme kostenlos.' },
         {
           name: 'keywords',
           content:
-            'Pavel Tyulnev, Entwickler Dresden, Softwareentwickler Dresden, Shopware 6 Spezialist, Shopware Plugin Entwicklung, individuelle Softwareentwicklung, API-Integration, Automatisierung, Bugfixing, Performance-Optimierung',
+            'Softwareentwickler Dresden, Betriebsabläufe digitalisieren, Digitalisierung Dresden, individuelle Softwareentwicklung, Dienstplanung Software, Zeiterfassung Software, Datenauswertung, API-Integration, Schnittstellen, Shopware Entwickler, Shopware Plugin Entwicklung, Software übernehmen, Pavel Tyulnev',
         },
-        { name: 'theme-color', content: '#050505' },
+        { name: 'theme-color', content: '#0d0f10' },
         {
           name: 'google-site-verification',
           content: 'oMKGQendz2vQPukT3BfJj6-DuvHD-CmfqF2cHTF6TjI',
         },
-        { property: 'og:type', content: 'website' },
         { property: 'og:locale', content: 'de_DE' },
-        {
-          property: 'og:title',
-          content: 'Pavel Tyulnev — Shopware 6 & individuelle Business-Software | Dresden',
-        },
-        {
-          property: 'og:description',
-          content:
-            'Pavel Tyulnev — Softwareentwickler in Dresden. Shopware 6, individuelle Business-Software, API-Integrationen und Automatisierung, Bugfixing und Performance.',
-        },
       ],
       script: [
         {

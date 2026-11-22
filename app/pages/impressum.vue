@@ -1,7 +1,11 @@
 <script setup lang="ts">
-useHead({
-  title: 'Impressum — Pavel Tyulnev',
+usePageSeo({
+  title: 'Impressum | Pavel Tyulnev',
+  description: 'Impressum von Pavel Tyulnev, Softwareentwickler in Dresden: Anbieterkennzeichnung, Kontakt und rechtliche Angaben zu dieser Website gemäß § 5 DDG.',
+  path: '/impressum',
 })
+
+useSeoMeta({ robots: 'noindex, follow' })
 </script>
 
 <template>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
-useHead({
-  title: 'Templates — Pavel Tyulnev',
+usePageSeo({
+  title: 'Templates: interaktive WebGL-Header | Pavel Tyulnev',
+  description: 'Interaktive WebGL-Hintergründe für Websites: Game of Life, Partikel-Ökosystem und Particle Life – als Live-Demo direkt im Browser zum Ausprobieren.',
+  path: '/templates',
 })
 
 const golSeed = ref(0x9e3779b9)

@@ -30,10 +30,42 @@ const facts = computed(() =>
   ].filter((f) => f.value),
 )
 
+const path = `/fallstudien/${cs.value.slug}`
+const seoTitle = cs.value.seoTitle || cs.value.title
+const seoDescription = cs.value.seoDescription || toSnippet(cs.value.summary)
+
+usePageSeo({
+  title: seoTitle,
+  description: seoDescription,
+  path,
+  type: 'article',
+  publishedTime: cs.value.date,
+})
+
 useHead({
-  title: `${cs.value.title} — Fallstudie — Pavel Tyulnev`,
-  link: [{ rel: 'canonical', href: `https://ptyulnev.de/fallstudien/${cs.value.slug}` }],
-  meta: [{ name: 'description', content: cs.value.summary }],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify([
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: seoTitle,
+          description: seoDescription,
+          url: `${SITE_URL}${path}`,
+          ...(cs.value.date ? { datePublished: cs.value.date } : {}),
+          inLanguage: 'de-DE',
+          keywords: cs.value.techStack.join(', '),
+          author: { '@type': 'Person', name: SITE_NAME, url: `${SITE_URL}/` },
+        },
+        breadcrumbJsonLd([
+          { name: 'Startseite', path: '/' },
+          { name: 'Fallstudien', path: '/fallstudien' },
+          { name: cs.value.title, path },
+        ]),
+      ]),
+    },
+  ],
 })
 </script>
 
@@ -43,7 +75,7 @@ useHead({
 
     <dl
       v-if="facts.length"
-      class="my-8 grid grid-cols-2 gap-x-6 gap-y-4 rounded-2xl border border-line bg-white/[0.03] p-6 light:bg-black/[0.025] sm:grid-cols-3"
+      class="my-8 grid grid-cols-2 gap-x-6 gap-y-4 rounded-2xl border border-line bg-ink-soft p-6 sm:grid-cols-3"
     >
       <div v-for="f in facts" :key="f.label">
         <dt class="text-[0.7rem] font-medium uppercase tracking-[0.14em] text-dim">{{ f.label }}</dt>

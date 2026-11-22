@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
-const root = ref<HTMLElement | null>(null)
-useScrollReveal(root)
 
 const { data: caseStudies } = await useCaseStudies()
 
@@ -20,21 +18,29 @@ const filtered = computed(() =>
     : caseStudies.value,
 )
 
+usePageSeo({
+  title: 'Fallstudien: gelöste Software-Probleme aus der Praxis',
+  description: 'Echte Fälle aus Projekten: Performance, Integrationen, Debugging und Automatisierung mit Symfony, Shopware und KI – mit Ausgangslage, Vorgehen und Ergebnis.',
+  path: '/fallstudien',
+})
+
 useHead({
-  title: 'Fallstudien — Pavel Tyulnev',
-  link: [{ rel: 'canonical', href: 'https://ptyulnev.de/fallstudien' }],
-  meta: [
+  script: [
     {
-      name: 'description',
-      content:
-        'Fallstudien aus der Praxis: Bugs, Performance-Probleme und Integrationen, die ich analysiert und gelöst habe — mit Vorgehen und Ergebnis.',
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(
+        breadcrumbJsonLd([
+          { name: 'Startseite', path: '/' },
+          { name: 'Fallstudien', path: '/fallstudien' },
+        ]),
+      ),
     },
   ],
 })
 </script>
 
 <template>
-  <main ref="root" class="relative pb-28 pt-32">
+  <main class="relative pb-28 pt-32">
     <div class="mx-auto w-full max-w-[1200px] px-6">
       <NuxtLink
         to="/"
@@ -96,7 +102,7 @@ useHead({
           v-for="cs in filtered"
           :key="cs.slug"
           :to="`/fallstudien/${cs.slug}`"
-          class="group flex flex-col gap-4 rounded-2xl border border-line bg-white/[0.03] p-6 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05] light:bg-black/[0.025] light:hover:border-black/15 light:hover:bg-black/[0.04] sm:p-7"
+          class="group flex flex-col gap-4 rounded-2xl border border-line bg-ink-soft p-6 transition-all duration-300 hover:border-line-strong sm:p-7"
           :class="cs.featured && !activeCategory ? 'md:col-span-2' : ''"
         >
           <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.14em] text-dim">
