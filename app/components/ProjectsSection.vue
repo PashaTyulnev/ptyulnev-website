@@ -5,11 +5,13 @@ interface CaseStudy {
   problem: string
   solution: string
   result: string
+  url?: string
 }
 
 const projects: CaseStudy[] = [
   {
     sector: 'SecureTime',
+    url: 'https://securetime.de',
     problem:
       'Dienstpläne, Zeiterfassung und Einsatznachweise wurden manuell in Excel gepflegt — fehleranfällig, unübersichtlich und schwer skalierbar.',
     solution:
@@ -18,13 +20,23 @@ const projects: CaseStudy[] = [
       'Weniger manuelle Planung, weniger Fehler in der Abrechnung und ein tagesaktueller Überblick über Mitarbeiter, Objekte, Schichten und Arbeitszeiten.',
   },
   {
+    sector: 'Parkingplan',
+    url: 'https://parkingplan.de',
+    problem:
+      'Parkplatzbetreiber nehmen Buchungen per Telefon, E-Mail und Excel an und verlieren dabei schnell den Überblick über die Belegung.',
+    solution:
+      'Eine Parkplatz-Software mit Online-Buchungssystem und Verwaltungsoberfläche, die Betreiber direkt nutzen können.',
+    result:
+      'Buchungen, Belegung und Kundendaten an einer Stelle, ohne Zettelwirtschaft und doppelte Pflege.',
+  },
+  {
     sector: 'ParkingSoft',
     problem:
       'Parkplatzbuchungen, Kundendaten und Verfügbarkeiten mussten digital sauber abgebildet und für den Alltag einfach bedienbar gemacht werden.',
     solution:
       'Eine Web-Anwendung für Parkplatzverwaltung mit Buchungsprozess, Verwaltungsoberfläche und über 20 externen und internen API-Integrationen — seit mehr als 4 Jahren produktiv im Einsatz.',
     result:
-      'Über 40.000 verarbeitete Buchungen und ein durchgängig digitaler Ablauf von der Buchung bis zur Verwaltung — die Antwortzeit sank trotz wachsender Datenmenge von rund einer Minute auf etwa eine Sekunde.',
+      'Über 40.000 verarbeitete Buchungen und ein durchgängig digitaler Ablauf von der Buchung bis zur Verwaltung.',
   },
   {
     sector: 'Shopware Plugins',
@@ -62,13 +74,22 @@ const facets: { key: keyof CaseStudy; label: string }[] = [
           :key="project.sector"
           class="grid gap-6 rounded-2xl border border-line bg-ink-soft p-7 transition-colors duration-300 hover:border-line-strong lg:grid-cols-[200px_1fr] lg:gap-10 lg:p-9"
         >
-          <div class="flex items-start">
+          <div>
             <span
               class="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1 text-xs font-medium tracking-wide text-muted"
             >
               <span class="size-1.5 rounded-full bg-fog/70" />
               {{ project.sector }}
             </span>
+            <a
+              v-if="project.url"
+              :href="project.url"
+              target="_blank"
+              rel="noopener"
+              class="mt-3 block text-sm text-accent hover:underline"
+            >
+              {{ project.url.replace('https://', '') }} ↗
+            </a>
           </div>
 
           <dl class="grid gap-6 sm:grid-cols-3">
