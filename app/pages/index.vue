@@ -1,9 +1,12 @@
 <template>
   <main>
     <HeroSection />
+    <ProblemsSection />
     <ServicesSection />
+    <CheckSection />
+    <ProcessSection />
     <ProjectsSection />
-    <TechSection />
+    <AboutSection />
     <ContactSection />
   </main>
 </template>

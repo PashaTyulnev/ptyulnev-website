@@ -8,7 +8,7 @@ const navItems = ['Plattform', 'Agenten', 'Analysen', 'Preise']
 </script>
 
 <template>
-  <div class="relative isolate size-full overflow-hidden bg-[#030408] text-fog">
+  <div class="relative isolate size-full overflow-hidden bg-[#030408] text-[#f5f5f7]">
     <!-- Particle Ecosystem background -->
     <div class="absolute inset-0">
       <TemplatesParticleEcosystemBackground :seed="seed" />

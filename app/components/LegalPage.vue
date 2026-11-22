@@ -9,14 +9,14 @@ defineProps<{
   <main class="legal mx-auto w-full max-w-3xl px-6 pb-28 pt-32">
     <NuxtLink
       to="/"
-      class="inline-flex items-center gap-2 text-sm text-muted transition-colors duration-150 hover:text-fog"
+      class="inline-flex items-center gap-2 text-sm text-muted transition-colors duration-150 hover:text-fg"
     >
       <span aria-hidden="true">←</span>
       Zurück zur Startseite
     </NuxtLink>
 
     <h1
-      class="mt-8 text-3xl font-semibold tracking-[-0.03em] text-fog sm:text-4xl"
+      class="mt-8 text-3xl font-semibold tracking-[-0.03em] text-fg sm:text-4xl"
     >
       {{ title }}
     </h1>
@@ -38,7 +38,7 @@ defineProps<{
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--color-fog);
+  color: var(--color-fg);
 }
 
 .legal-content :deep(h3) {
@@ -46,7 +46,7 @@ defineProps<{
   margin-bottom: 0.5rem;
   font-size: 1.02rem;
   font-weight: 600;
-  color: var(--color-fog);
+  color: var(--color-fg);
 }
 
 .legal-content :deep(p),
@@ -67,13 +67,13 @@ defineProps<{
 }
 
 .legal-content :deep(a) {
-  color: var(--color-fog);
+  color: var(--color-fg);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .legal-content :deep(strong) {
-  color: var(--color-fog);
+  color: var(--color-fg);
   font-weight: 600;
 }
 </style>

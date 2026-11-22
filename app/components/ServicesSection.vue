@@ -1,66 +1,45 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const root = ref<HTMLElement | null>(null)
-useScrollReveal(root)
-
 const services = [
   {
-    title: 'Prozessautomatisierung',
-    description:
-      'Manuelle Abläufe analysieren und durch Software automatisieren — weniger Copy-Paste, weniger Fehler, mehr Zeit für das Wesentliche.',
+    title: 'Abläufe digitalisieren',
+    text: 'Aus Excel-Listen, Papierformularen und Handarbeit werden interne Tools, die genau zu Ihrem Ablauf passen.',
+    points: ['Interne Web-Tools', 'Automatische Importe und Exporte', 'Auswertungen und PDFs'],
   },
   {
-    title: 'KI-Integration',
-    description:
-      'Künstliche Intelligenz sinnvoll in bestehende Prozesse und Anwendungen integrieren — dort, wo sie echten Mehrwert schafft.',
+    title: 'Shopware betreuen',
+    text: 'Ich halte Ihren Shop aktuell und erweitere ihn dort, wo Standard-Plugins nicht reichen.',
+    points: ['Wartung und Updates', 'Individuelle Plugins', 'Performance-Optimierung'],
   },
   {
-    title: 'Individuelle Software',
-    description:
-      'Webanwendungen und Business-Tools entwickeln, wenn Standardsoftware nicht ausreicht oder zu unflexibel ist.',
-  },
-  {
-    title: 'Beratung & Architektur',
-    description:
-      'Technische Entscheidungen, Systemarchitektur und Skalierung begleiten — damit Lösungen langfristig tragen.',
+    title: 'Software übernehmen',
+    text: 'Wenn der bisherige Entwickler nicht mehr da ist, arbeite ich mich ein und bringe das System wieder in sichere Hände.',
+    points: ['Code verstehen und dokumentieren', 'Fehler und Engpässe beheben', 'Weiterentwicklung'],
   },
 ]
 </script>
 
 <template>
-  <section
-    id="leistungen"
-    ref="root"
-    class="relative border-t border-line py-28 lg:py-36"
-  >
-    <div
-      class="pointer-events-none absolute left-1/2 top-0 h-[28rem] w-[40rem] -translate-x-1/2 rounded-full bg-white/[0.04] blur-[120px]"
-    />
-
-    <div class="relative mx-auto w-full max-w-[1200px] px-6">
+  <section id="leistungen" class="border-t border-line py-24">
+    <div class="mx-auto max-w-6xl px-6">
       <SectionHeading
         eyebrow="Leistungen"
-        title="Ich löse Geschäftsprobleme — nicht nur technische Aufgaben."
-        lead="Vier Wege, wie ich Unternehmen helfe, effizienter zu arbeiten und manuelle Arbeit zu eliminieren."
+        title="Drei Dinge, die ich gut kann."
+        lead="Der gemeinsame Nenner: Abläufe verstehen, Fehler finden und passende Software bauen oder verbessern."
       />
-
-      <div class="mt-14 grid gap-4 sm:grid-cols-2">
+      <div class="mt-12 grid gap-4 lg:grid-cols-3">
         <article
           v-for="(service, index) in services"
           :key="service.title"
-          data-reveal
-          class="reveal-init group relative overflow-hidden rounded-2xl border border-line bg-white/[0.03] p-7 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05]"
+          class="flex flex-col rounded-xl border border-line bg-surface p-7"
         >
-          <span class="text-sm font-semibold tabular-nums text-dim">
-            0{{ index + 1 }}
-          </span>
-          <h3 class="mt-4 text-xl font-semibold tracking-tight text-fog">
-            {{ service.title }}
-          </h3>
-          <p class="mt-3 text-[0.95rem] leading-relaxed text-muted">
-            {{ service.description }}
-          </p>
+          <span class="text-sm font-semibold tabular-nums text-accent">0{{ index + 1 }}</span>
+          <h3 class="mt-3 text-xl font-semibold tracking-tight">{{ service.title }}</h3>
+          <p class="mb-6 mt-3 text-[0.95rem] leading-relaxed text-muted">{{ service.text }}</p>
+          <ul class="mt-auto space-y-2 border-t border-line pt-5 text-sm">
+            <li v-for="point in service.points" :key="point" class="flex gap-2">
+              <span class="text-accent" aria-hidden="true">✓</span>{{ point }}
+            </li>
+          </ul>
         </article>
       </div>
     </div>

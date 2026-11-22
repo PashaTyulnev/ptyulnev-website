@@ -61,13 +61,11 @@ useHead({
       DSGVO.
     </p>
 
-    <h2>5. Externe Inhalte (Spline & Google Fonts)</h2>
+    <h2>5. Externe Inhalte (Google Fonts)</h2>
     <p>
-      Zur Darstellung der 3D-Szene auf der Startseite wird Inhalt von
-      <strong>Spline</strong> (prod.spline.design) geladen. Zur Darstellung von
-      Schriften werden <strong>Google Fonts</strong> über die Server von Google
-      eingebunden. Beim Aufruf der Seite wird dabei Ihre IP-Adresse an die
-      jeweiligen Anbieter übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
+      Zur Darstellung von Schriften werden <strong>Google Fonts</strong> über
+      die Server von Google eingebunden. Beim Aufruf der Seite wird dabei Ihre
+      IP-Adresse an Google übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
       DSGVO (berechtigtes Interesse an einer ansprechenden Darstellung).
     </p>
     <p>

@@ -25,7 +25,7 @@ const ecoActive = isActive('eco')
   <main class="mx-auto w-full max-w-[1200px] px-6 pb-28 pt-32">
     <NuxtLink
       to="/"
-      class="inline-flex items-center gap-2 text-sm text-muted transition-colors duration-150 hover:text-fog"
+      class="inline-flex items-center gap-2 text-sm text-muted transition-colors duration-150 hover:text-fg"
     >
       <span aria-hidden="true">←</span>
       Zurück zur Startseite
@@ -33,13 +33,13 @@ const ecoActive = isActive('eco')
 
     <header class="mt-8 max-w-2xl">
       <span
-        class="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-muted"
+        class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 text-xs font-medium tracking-wide text-muted"
       >
-        <span class="size-1.5 rounded-full bg-fog/80" />
+        <span class="size-1.5 rounded-full bg-accent" />
         Experimente · WebGL
       </span>
       <h1
-        class="mt-6 text-3xl font-semibold tracking-[-0.03em] text-fog sm:text-4xl"
+        class="mt-6 text-3xl font-semibold tracking-[-0.03em] text-fg sm:text-4xl"
       >
         Templates
       </h1>
@@ -53,7 +53,7 @@ const ecoActive = isActive('eco')
     <section class="mt-14">
       <div class="mb-5 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 class="text-xl font-semibold tracking-tight text-fog">
+          <h2 class="text-xl font-semibold tracking-tight text-fg">
             01 · Game of Life Header
           </h2>
           <p class="mt-1.5 text-sm text-muted">
@@ -105,16 +105,16 @@ const ecoActive = isActive('eco')
 
       <!-- Browser-frame preview -->
       <div
-        class="overflow-hidden rounded-2xl border border-line-strong bg-ink-soft shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)]"
+        class="overflow-hidden rounded-2xl border border-line-strong bg-[#0a0a0c] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]"
       >
         <div
-          class="flex items-center gap-2 border-b border-line bg-white/[0.02] px-4 py-3"
+          class="flex items-center gap-2 border-b border-white/10 bg-white/[0.02] px-4 py-3"
         >
           <span class="size-3 rounded-full bg-white/15" />
           <span class="size-3 rounded-full bg-white/15" />
           <span class="size-3 rounded-full bg-white/15" />
           <span
-            class="ml-3 hidden rounded-md bg-white/[0.04] px-3 py-1 text-xs text-dim sm:block"
+            class="ml-3 hidden rounded-md bg-white/[0.04] px-3 py-1 text-xs text-white/40 sm:block"
           >
             cellular.app
           </span>
@@ -136,7 +136,7 @@ const ecoActive = isActive('eco')
         <span
           v-for="tag in ['WebGL2', 'GLSL', 'Ping-Pong-FBO', 'Dark Mode']"
           :key="tag"
-          class="rounded-full border border-line bg-white/[0.02] px-3 py-1 text-xs text-muted"
+          class="rounded-full border border-line bg-surface px-3 py-1 text-xs text-muted"
         >
           {{ tag }}
         </span>
@@ -147,7 +147,7 @@ const ecoActive = isActive('eco')
     <section class="mt-20">
       <div class="mb-5 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 class="text-xl font-semibold tracking-tight text-fog">
+          <h2 class="text-xl font-semibold tracking-tight text-fg">
             02 · Particle Ecosystem
           </h2>
           <p class="mt-1.5 text-sm text-muted">
@@ -199,16 +199,16 @@ const ecoActive = isActive('eco')
 
       <!-- Browser-frame preview -->
       <div
-        class="overflow-hidden rounded-2xl border border-line-strong bg-ink-soft shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)]"
+        class="overflow-hidden rounded-2xl border border-line-strong bg-[#0a0a0c] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]"
       >
         <div
-          class="flex items-center gap-2 border-b border-line bg-white/[0.02] px-4 py-3"
+          class="flex items-center gap-2 border-b border-white/10 bg-white/[0.02] px-4 py-3"
         >
           <span class="size-3 rounded-full bg-white/15" />
           <span class="size-3 rounded-full bg-white/15" />
           <span class="size-3 rounded-full bg-white/15" />
           <span
-            class="ml-3 hidden rounded-md bg-white/[0.04] px-3 py-1 text-xs text-dim sm:block"
+            class="ml-3 hidden rounded-md bg-white/[0.04] px-3 py-1 text-xs text-white/40 sm:block"
           >
             ecosystem.app
           </span>
@@ -230,7 +230,7 @@ const ecoActive = isActive('eco')
         <span
           v-for="tag in ['WebGL2', 'Artificial Life', 'CPU-Simulation', 'HDR Bloom']"
           :key="tag"
-          class="rounded-full border border-line bg-white/[0.02] px-3 py-1 text-xs text-muted"
+          class="rounded-full border border-line bg-surface px-3 py-1 text-xs text-muted"
         >
           {{ tag }}
         </span>

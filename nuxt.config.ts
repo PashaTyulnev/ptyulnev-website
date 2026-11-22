@@ -8,31 +8,27 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    optimizeDeps: {
-      include: ['@splinetool/viewer', 'gsap', 'gsap/ScrollTrigger'],
-    },
-  },
-
-  vue: {
-    compilerOptions: {
-      // Treat the Spline web component as a native custom element.
-      isCustomElement: (tag) => tag === 'spline-viewer',
-    },
   },
 
   app: {
     head: {
-      title: 'Pavel Tyulnev — Web Apps, SaaS & Automations',
-      htmlAttrs: { lang: 'en' },
+      title: 'Pavel Tyulnev — Abläufe digitalisieren, Shopware, Software übernehmen',
+      htmlAttrs: { lang: 'de' },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
           content:
-            'Building web apps, SaaS products and automations with Symfony, Nuxt, Shopware and AI integrations.',
+            'Ich digitalisiere manuelle Abläufe, betreue Shopware-Shops und übernehme Software, wenn der bisherige Entwickler weg ist.',
         },
-        { name: 'theme-color', content: '#050505' },
+      ],
+      script: [
+        {
+          // Apply the saved or system colour scheme before first paint.
+          innerHTML:
+            "try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}",
+        },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },

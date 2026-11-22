@@ -1,100 +1,58 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const root = ref<HTMLElement | null>(null)
-useScrollReveal(root)
-
-interface CaseStudy {
-  sector: string
-  problem: string
-  solution: string
-  result: string
-}
-
-const projects: CaseStudy[] = [
+const projects = [
   {
-    sector: 'SecureTime',
+    name: 'SecureTime',
     problem:
-      'Dienstpläne, Zeiterfassung und Einsatznachweise wurden manuell in Excel gepflegt — fehleranfällig, unübersichtlich und schwer skalierbar.',
+      'Dienstpläne, Zeiterfassung und Einsatznachweise eines Sicherheitsdienstes liefen über Excel: fehleranfällig und kaum skalierbar.',
     solution:
-      'Eine individuelle Web-Anwendung für Sicherheitsdienste mit Schichtplanung, Mitarbeiterverwaltung, digitaler Zeiterfassung, Reporting und PDF-Auswertungen.',
-    result:
-      'Weniger manuelle Planung, weniger Fehler und ein klarer Überblick über Mitarbeiter, Objekte, Schichten und Arbeitszeiten.',
+      'Eine eigene Web-Anwendung mit Schichtplanung, Mitarbeiterverwaltung, digitaler Zeiterfassung und PDF-Auswertungen.',
+    result: 'Weniger Planungsaufwand, weniger Fehler und ein klarer Überblick über Schichten und Arbeitszeiten.',
   },
   {
-    sector: 'ParkingSoft',
+    name: 'ParkingSoft',
     problem:
-      'Parkplatzbuchungen, Kundendaten und Verfügbarkeiten mussten digital sauber abgebildet und für den Alltag einfach bedienbar gemacht werden.',
-    solution:
-      'Eine moderne Web-Anwendung für Parkplatzverwaltung mit Buchungsprozess, Verwaltungsoberfläche, REST-API-Anbindung und klarer Benutzerführung.',
-    result:
-      'Ein digitaler Ablauf von der Buchung bis zur Verwaltung — schneller, übersichtlicher und weniger abhängig von manueller Bearbeitung.',
+      'Parkplatzbuchungen, Kundendaten und Verfügbarkeiten sollten digital abgebildet und im Alltag einfach bedienbar sein.',
+    solution: 'Eine Web-Anwendung mit Buchungsprozess, Verwaltungsoberfläche und klarer Benutzerführung.',
+    result: 'Ein durchgängiger digitaler Ablauf von der Buchung bis zur Verwaltung, ohne Nacharbeit von Hand.',
   },
   {
-    sector: 'Shopware Plugins',
+    name: 'Shopware-Plugins',
     problem:
-      'Shopware-Prozesse wie Produktdaten, Bestellungen, Schnittstellen oder wiederkehrende Admin-Aufgaben waren zu manuell oder nicht passend automatisiert.',
-    solution:
-      'Individuelle Shopware-Erweiterungen und Integrationen mit API-Anbindungen, Automatisierungen, Admin-Modulen und sauberer Backend-Logik.',
-    result:
-      'Weniger manuelle Arbeit im Shop-Alltag, stabilere Prozesse und Erweiterungen, die exakt zum bestehenden Business passen.',
+      'Wiederkehrende Aufgaben im Shop-Alltag, etwa bei Produktdaten und Bestellungen, kosteten unnötig viel Handarbeit.',
+    solution: 'Individuelle Shopware-Erweiterungen mit Admin-Modulen, Automatisierungen und sauberer Backend-Logik.',
+    result: 'Weniger manuelle Arbeit und Erweiterungen, die genau zum bestehenden Shop passen.',
   },
 ]
 
-const facets: { key: keyof CaseStudy; label: string }[] = [
+const facets = [
   { key: 'problem', label: 'Problem' },
   { key: 'solution', label: 'Lösung' },
   { key: 'result', label: 'Ergebnis' },
-]
+] as const
 </script>
 
 <template>
-  <section
-    id="projekte"
-    ref="root"
-    class="relative border-t border-line py-28 lg:py-36"
-  >
-    <div class="relative mx-auto w-full max-w-[1200px] px-6">
+  <section id="projekte" class="border-t border-line py-24">
+    <div class="mx-auto max-w-6xl px-6">
       <SectionHeading
         eyebrow="Projekte"
-        title="Gelöste Probleme, nicht nur Software."
-        lead="Aus manuellen Abläufen, verstreuten Daten und wiederkehrenden Aufgaben entstehen digitale Lösungen mit messbarem Nutzen."
+        title="Gelöste Probleme aus der Praxis."
       />
-
-      <div class="mt-14 flex flex-col gap-4">
+      <div class="mt-12 space-y-4">
         <article
           v-for="project in projects"
-          :key="project.sector"
-          data-reveal
-          class="reveal-init grid gap-6 rounded-2xl border border-line bg-white/[0.03] p-7 backdrop-blur-md transition-colors duration-300 hover:border-white/20 lg:grid-cols-[200px_1fr] lg:gap-10 lg:p-9"
+          :key="project.name"
+          class="grid gap-6 rounded-xl border border-line bg-surface p-7 lg:grid-cols-[180px_1fr] lg:gap-10"
         >
-          <div class="flex items-start">
-            <span
-              class="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1 text-xs font-medium tracking-wide text-muted"
-            >
-              <span class="size-1.5 rounded-full bg-fog/70" />
-              {{ project.sector }}
-            </span>
-          </div>
-
+          <h3 class="font-semibold">{{ project.name }}</h3>
           <dl class="grid gap-6 sm:grid-cols-3">
             <div v-for="facet in facets" :key="facet.key">
-              <dt
-                class="text-xs font-medium uppercase tracking-[0.14em] text-dim"
-              >
-                {{ facet.label }}
-              </dt>
-              <dd class="mt-2 text-[0.95rem] leading-relaxed text-fog/90">
-                {{ project[facet.key] }}
-              </dd>
+              <dt class="text-xs font-medium uppercase tracking-wider text-dim">{{ facet.label }}</dt>
+              <dd class="mt-2 text-[0.95rem] leading-relaxed text-muted">{{ project[facet.key] }}</dd>
             </div>
           </dl>
         </article>
       </div>
-
-      <p class="mt-6 text-sm text-dim">
-        Ausgewählte Projekte. Weitere Details gerne auf Anfrage.
-      </p>
     </div>
   </section>
 </template>
