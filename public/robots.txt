@@ -1,2 +1,13 @@
 User-Agent: *
 Disallow:
+
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: ChatGPT-User
+Allow: /
+
+User-Agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://ptyulnev.de/sitemap.xml

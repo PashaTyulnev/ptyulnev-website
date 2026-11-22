@@ -7,10 +7,10 @@
     <meta name="description" content="Arbeitszeugnis: Pavel Tyulnev, Software-Entwickler Backend, ito consult GmbH Dresden, 15.03.2021 – 31.10.2025.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#09090e">
-    <link rel="canonical" href="https://cv.it-horizon.de/arbeitszeugnis.html">
-    <link rel="alternate" hreflang="de" href="https://cv.it-horizon.de/arbeitszeugnis.html">
-    <link rel="alternate" hreflang="en" href="https://cv.it-horizon.de/arbeitszeugnis.html">
-    <link rel="alternate" hreflang="x-default" href="https://cv.it-horizon.de/arbeitszeugnis.html">
+    <link rel="canonical" href="https://ptyulnev.de/cv/arbeitszeugnis.html">
+    <link rel="alternate" hreflang="de" href="https://ptyulnev.de/cv/arbeitszeugnis.html">
+    <link rel="alternate" hreflang="en" href="https://ptyulnev.de/cv/arbeitszeugnis.html">
+    <link rel="alternate" hreflang="x-default" href="https://ptyulnev.de/cv/arbeitszeugnis.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -136,6 +136,30 @@
         .back:hover {
             background: rgba(91, 156, 246, 0.14);
             border-color: rgba(91, 156, 246, 0.35);
+        }
+
+        .pdf-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            color: var(--gold);
+            cursor: pointer;
+            background: rgba(201, 169, 110, 0.1);
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .pdf-btn:hover {
+            background: rgba(201, 169, 110, 0.18);
+            border-color: rgba(201, 169, 110, 0.45);
+        }
+        .pdf-btn:disabled {
+            opacity: 0.6;
+            cursor: default;
         }
 
         .badge {
@@ -276,7 +300,7 @@
         }
 
         @media print {
-            .ambient, .top-bar .badge, .back, .lang-switch { display: none !important; }
+            .ambient, .top-bar .badge, .back, .lang-switch, .pdf-btn { display: none !important; }
             body { background: #fff; color: #111; }
             .doc {
                 background: #fff;
@@ -300,6 +324,7 @@
 <div class="wrap">
     <div class="top-bar">
         <a class="back" href="index.html" data-i18n="z_back">← Zurück zum Lebenslauf</a>
+        <button type="button" id="btn-zeugnis-pdf" class="pdf-btn">⬇ <span data-i18n="z_pdf">PDF herunterladen</span></button>
         <span class="badge" data-i18n="z_badge">Offizielles Zeugnis</span>
     </div>
 
@@ -359,6 +384,7 @@
             meta_desc: 'Arbeitszeugnis: Pavel Tyulnev, Software-Entwickler Backend, ito consult GmbH Dresden, 15.03.2021 – 31.10.2025.',
             z_back: '← Zurück zum Lebenslauf',
             z_badge: 'Offizielles Zeugnis',
+            z_pdf: 'PDF herunterladen',
             z_title: 'Arbeitszeugnis',
             z_sub: '<strong>Herr Pavel Tyulnev</strong>, geboren am 25.06.1995, war in der Zeit vom <strong>15.03.2021</strong> bis zum <strong>31.10.2025</strong> bei der <strong>ito consult GmbH</strong> in Dresden als <strong>Software-Entwickler im Backend-Bereich</strong> tätig.',
             z_company: 'Die ito consult GmbH, mit Sitz in Dresden, ist ein mittelständisches Unternehmen in der IT-Branche. Sie bietet umfassende Lösungen in den Bereichen IT- und Netzwerksicherheit an, entwickelt maßgeschneiderte Software, betreibt Webseiten und Onlineshops für Kunden im gesamten DACH-Bereich.',
@@ -389,6 +415,7 @@
             meta_desc: 'Work reference: Pavel Tyulnev, backend software developer, ito consult GmbH Dresden, Mar 15, 2021 – Oct 31, 2025.',
             z_back: '← Back to résumé',
             z_badge: 'Official reference letter',
+            z_pdf: 'Download PDF',
             z_title: 'Employment reference',
             z_sub: '<strong>Mr. Pavel Tyulnev</strong>, born on 25 June 1995, was employed from <strong>15 March 2021</strong> to <strong>31 October 2025</strong> at <strong>ito consult GmbH</strong> in Dresden as a <strong>backend software developer</strong>.',
             z_company: 'ito consult GmbH, headquartered in Dresden, is a medium-sized IT company. It offers comprehensive solutions in IT and network security, develops tailor-made software, and operates websites and online shops for clients across the DACH region.',
@@ -459,6 +486,155 @@
     var btnEn = document.getElementById('lang-en');
     if (btnDe) btnDe.addEventListener('click', function () { applyLang('de'); setSwitchState('de'); });
     if (btnEn) btnEn.addEventListener('click', function () { applyLang('en'); setSwitchState('en'); });
+
+    // ---------- Clean, selectable-text PDF export ----------
+    var vendorPromise = null;
+
+    function loadJsPdf() {
+        if (window.jspdf) return Promise.resolve();
+        if (vendorPromise) return vendorPromise;
+        vendorPromise = new Promise(function (resolve, reject) {
+            var el = document.createElement('script');
+            el.src = '/cv/vendor/jspdf.umd.min.js';
+            el.onload = function () { resolve(); };
+            el.onerror = function () { reject(new Error('Failed to load jsPDF')); };
+            document.head.appendChild(el);
+        });
+        return vendorPromise;
+    }
+
+    function stripHtml(str) {
+        return String(str).replace(/<[^>]+>/g, '');
+    }
+
+    function buildZeugnisPdf(doc, pack) {
+        var pageW = 210, pageH = 297;
+        var marginX = 24, marginTop = 24, marginBottom = 22;
+        var contentW = pageW - marginX * 2;
+        var y = marginTop;
+
+        function ensureSpace(h) {
+            if (y + h > pageH - marginBottom) {
+                doc.addPage();
+                y = marginTop;
+            }
+        }
+
+        function paragraph(str, opts) {
+            opts = opts || {};
+            var size = opts.size || 11;
+            var lh = opts.lh || size * 0.46;
+            doc.setFont('times', opts.style || 'normal');
+            doc.setFontSize(size);
+            doc.setTextColor(20, 20, 20);
+            var indent = opts.indent || 0;
+            var lines = doc.splitTextToSize(stripHtml(str), contentW - indent);
+            lines.forEach(function (line) {
+                ensureSpace(lh);
+                doc.text(line, marginX + indent, y);
+                y += lh;
+            });
+            y += opts.gapAfter != null ? opts.gapAfter : 3.6;
+        }
+
+        function bullet(str) {
+            var size = 11, lh = size * 0.46, indent = 6;
+            doc.setFont('times', 'normal');
+            doc.setFontSize(size);
+            doc.setTextColor(20, 20, 20);
+            var lines = doc.splitTextToSize(stripHtml(str), contentW - indent);
+            lines.forEach(function (line, i) {
+                ensureSpace(lh);
+                if (i === 0) doc.text('\u2013', marginX + 1, y);
+                doc.text(line, marginX + indent, y);
+                y += lh;
+            });
+            y += 1.2;
+        }
+
+        // Title
+        doc.setFont('times', 'bold');
+        doc.setFontSize(19);
+        doc.setTextColor(10, 10, 10);
+        doc.text(pack.z_title, marginX, y);
+        y += 4;
+        doc.setDrawColor(120, 120, 120);
+        doc.setLineWidth(0.3);
+        doc.line(marginX, y, marginX + contentW, y);
+        y += 9;
+
+        paragraph(pack.z_sub);
+        paragraph(pack.z_company);
+        paragraph(pack.z_lead, { gapAfter: 2.5 });
+
+        for (var i = 1; i <= 12; i++) {
+            var li = pack['z_li' + i];
+            if (li) bullet(li);
+        }
+        y += 3;
+
+        ['z_e1', 'z_e2', 'z_e3', 'z_e4', 'z_e5', 'z_e6'].forEach(function (k) {
+            if (pack[k]) paragraph(pack[k]);
+        });
+
+        // Signature block
+        ensureSpace(34);
+        y += 5;
+        paragraph(pack.z_place, { gapAfter: 8 });
+        doc.setFont('times', 'bold');
+        doc.setFontSize(11.5);
+        doc.text('ito consult GmbH', marginX, y);
+        y += 12;
+        doc.setFont('times', 'normal');
+        doc.setFontSize(11);
+        doc.text('Marcus Kupke', marginX, y);
+        y += 4.8;
+        doc.setFontSize(10);
+        doc.setTextColor(90, 90, 90);
+        doc.text(pack.z_role, marginX, y);
+
+        // Footer page numbers when the document spans multiple pages
+        var pageCount = doc.internal.getNumberOfPages();
+        if (pageCount > 1) {
+            for (var n = 1; n <= pageCount; n++) {
+                doc.setPage(n);
+                doc.setFont('times', 'normal');
+                doc.setFontSize(9);
+                doc.setTextColor(120, 120, 120);
+                doc.text(pack.z_title + ' \u2013 Pavel Tyulnev \u2013 ' + n + '/' + pageCount, pageW - marginX, pageH - 12, { align: 'right' });
+            }
+        }
+    }
+
+    function exportZeugnis() {
+        var btn = document.getElementById('btn-zeugnis-pdf');
+        var lang = document.documentElement.lang === 'en' ? 'en' : 'de';
+        var pack = STR[lang] || STR.de;
+        if (btn) {
+            btn.disabled = true;
+            btn.dataset.originalHtml = btn.innerHTML;
+            btn.innerHTML = '\u23F3 <span>' + (lang === 'en' ? 'Generating\u2026' : 'Erstelle\u2026') + '</span>';
+        }
+        loadJsPdf().then(function () {
+            var jsPDF = window.jspdf.jsPDF;
+            var pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+            buildZeugnisPdf(pdf, pack);
+            pdf.save(lang === 'en' ? 'Pavel-Tyulnev-Work-Reference-EN.pdf' : 'Pavel-Tyulnev-Arbeitszeugnis-DE.pdf');
+        }).catch(function (err) {
+            console.error(err);
+            alert(lang === 'en'
+                ? 'PDF export failed. Please reload the page and try again.'
+                : 'PDF-Export fehlgeschlagen. Bitte Seite neu laden und erneut versuchen.');
+        }).finally(function () {
+            if (btn) {
+                btn.disabled = false;
+                if (btn.dataset.originalHtml) btn.innerHTML = btn.dataset.originalHtml;
+            }
+        });
+    }
+
+    var btnPdf = document.getElementById('btn-zeugnis-pdf');
+    if (btnPdf) btnPdf.addEventListener('click', exportZeugnis);
 })();
 </script>
 </body>

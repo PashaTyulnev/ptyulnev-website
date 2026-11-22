@@ -6,13 +6,29 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
 
+  runtimeConfig: {
+    public: {
+      directusUrl: process.env.NUXT_PUBLIC_DIRECTUS_URL || 'https://cdn.ptyulnev.de',
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['@splinetool/viewer', 'gsap', 'gsap/ScrollTrigger'],
+    },
+  },
+
+  vue: {
+    compilerOptions: {
+      // Treat the Spline web component as a native custom element.
+      isCustomElement: (tag) => tag === 'spline-viewer',
+    },
   },
 
   app: {
     head: {
-      title: 'Pavel Tyulnev — Abläufe digitalisieren, Shopware, Software übernehmen',
+      title: 'Pavel Tyulnev — Shopware 6 & individuelle Business-Software | Dresden',
       htmlAttrs: { lang: 'de' },
       meta: [
         { charset: 'utf-8' },
@@ -20,18 +36,42 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Ich digitalisiere manuelle Abläufe, betreue Shopware-Shops und übernehme Software, wenn der bisherige Entwickler weg ist.',
+            'Pavel Tyulnev — Softwareentwickler in Dresden. Shopware 6, individuelle Business-Software, API-Integrationen und Automatisierung, Bugfixing und Performance.',
+        },
+        {
+          name: 'keywords',
+          content:
+            'Pavel Tyulnev, Entwickler Dresden, Softwareentwickler Dresden, Shopware 6 Spezialist, Shopware Plugin Entwicklung, individuelle Softwareentwicklung, API-Integration, Automatisierung, Bugfixing, Performance-Optimierung',
+        },
+        { name: 'theme-color', content: '#050505' },
+        {
+          name: 'google-site-verification',
+          content: 'oMKGQendz2vQPukT3BfJj6-DuvHD-CmfqF2cHTF6TjI',
+        },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:locale', content: 'de_DE' },
+        {
+          property: 'og:title',
+          content: 'Pavel Tyulnev — Shopware 6 & individuelle Business-Software | Dresden',
+        },
+        {
+          property: 'og:description',
+          content:
+            'Pavel Tyulnev — Softwareentwickler in Dresden. Shopware 6, individuelle Business-Software, API-Integrationen und Automatisierung, Bugfixing und Performance.',
         },
       ],
       script: [
         {
-          // Apply the saved or system colour scheme before first paint.
+          // Runs before hydration so a saved light-theme preference never
+          // flashes the default dark theme first.
           innerHTML:
-            "try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}",
+            "(function(){try{if(localStorage.getItem('theme')==='light'){document.documentElement.setAttribute('data-theme','light')}}catch(e){}})();",
         },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {
           rel: 'preconnect',

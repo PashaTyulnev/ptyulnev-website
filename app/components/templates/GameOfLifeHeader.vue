@@ -8,7 +8,7 @@ const navItems = ['Produkt', 'Lösungen', 'Preise', 'Docs']
 </script>
 
 <template>
-  <div class="relative isolate size-full overflow-hidden bg-[#050506] text-[#f5f5f7]">
+  <div class="relative isolate size-full overflow-hidden bg-[#050506] text-fog">
     <!-- WebGL Conway's Game of Life background -->
     <div class="absolute inset-0">
       <TemplatesGameOfLifeBackground :seed="seed" />
@@ -77,7 +77,7 @@ const navItems = ['Produkt', 'Lösungen', 'Preise', 'Docs']
 
         <div class="mt-9 flex flex-col items-center gap-3 sm:flex-row">
           <span
-            class="inline-flex h-12 cursor-default items-center justify-center rounded-xl bg-[#f5f5f7] px-7 text-[0.95rem] font-medium tracking-tight text-[#050505] transition-transform hover:-translate-y-0.5"
+            class="inline-flex h-12 cursor-default items-center justify-center rounded-xl bg-fog px-7 text-[0.95rem] font-medium tracking-tight text-ink transition-transform hover:-translate-y-0.5"
           >
             Kostenlos starten
           </span>
