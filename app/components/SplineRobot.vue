@@ -8,7 +8,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
  * already tracks the mouse with its head inside the Spline scene, so this
  * component simply mounts it full-bleed and centered behind the hero content.
  */
-const SCENE_URL = 'https://prod.spline.design/hwnITsxvyRhIJgsE/scene.splinecode'
+const SCENE_URL = '/spline/scene.splinecode'
 
 const isLoaded = ref(false)
 const container = ref<HTMLElement | null>(null)
@@ -69,18 +69,7 @@ function onSceneLoad(): void {
     </ClientOnly>
 
     <!-- Vignette to keep the hero content readable above the robot. -->
-    <div
-      class="pointer-events-none absolute inset-0"
-      style="
-        background:
-          radial-gradient(
-            120% 90% at 50% 45%,
-            transparent 0%,
-            transparent 45%,
-            rgba(5, 5, 5, 0.55) 100%
-          );
-      "
-    />
+    <div class="pointer-events-none absolute inset-0 vignette" />
   </div>
 </template>
 
@@ -88,5 +77,16 @@ function onSceneLoad(): void {
 /* Allow vertical page scroll on touch devices over the canvas. */
 :deep(spline-viewer) {
   touch-action: pan-y;
+}
+
+/* Uses the theme background token so the vignette stays dark on dark and
+   light on light instead of always darkening the scene. */
+.vignette {
+  background: radial-gradient(
+    120% 90% at 50% 45%,
+    transparent 0%,
+    transparent 45%,
+    color-mix(in srgb, var(--color-ink) 55%, transparent) 100%
+  );
 }
 </style>

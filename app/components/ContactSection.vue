@@ -16,10 +16,10 @@ const currentYear = new Date().getFullYear()
     <div class="relative mx-auto w-full max-w-[1200px] px-6">
       <div
         data-reveal
-        class="reveal-init relative overflow-hidden rounded-3xl border border-line bg-white/[0.04] px-8 py-16 text-center backdrop-blur-xl sm:px-16 sm:py-20"
+        class="reveal-init relative overflow-hidden rounded-3xl border border-line bg-white/[0.04] px-8 py-16 text-center backdrop-blur-xl light:bg-black/[0.03] sm:px-16 sm:py-20"
       >
         <div
-          class="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-white/[0.06] blur-[110px]"
+          class="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-white/[0.06] blur-[110px] light:bg-black/[0.04]"
         />
 
         <div class="relative">
@@ -44,10 +44,10 @@ const currentYear = new Date().getFullYear()
             class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             <BaseButton href="mailto:kontakt@ptyulnev.de" variant="primary">
-              Gespräch vereinbaren
-            </BaseButton>
-            <BaseButton href="mailto:kontakt@ptyulnev.de" variant="secondary">
               kontakt@ptyulnev.de
+            </BaseButton>
+            <BaseButton href="tel:+4917670583534" variant="secondary">
+              0176 705 83 534
             </BaseButton>
           </div>
         </div>
@@ -56,7 +56,7 @@ const currentYear = new Date().getFullYear()
       <footer
         class="mt-14 flex flex-col items-center justify-between gap-4 text-sm text-dim sm:flex-row"
       >
-        <span>© {{ currentYear }} Pavel Tyulnev · ptyulnev.de</span>
+        <span>© {{ currentYear }} Pavel Tyulnev · Dresden · ptyulnev.de</span>
         <nav class="flex items-center gap-6">
           <NuxtLink
             to="/impressum"
@@ -70,6 +70,13 @@ const currentYear = new Date().getFullYear()
           >
             Datenschutz
           </NuxtLink>
+          <a
+            href="/sitemap.xml"
+            download="sitemap.xml"
+            class="transition-colors duration-150 hover:text-fog"
+          >
+            Sitemap
+          </a>
         </nav>
       </footer>
     </div>

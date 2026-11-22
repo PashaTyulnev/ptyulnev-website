@@ -1,18 +1,27 @@
 <script setup lang="ts">
-defineProps<{
-  title: string
-  updated?: string
-}>()
+withDefaults(
+  defineProps<{
+    title: string
+    updated?: string
+    backHref?: string
+    backLabel?: string
+  }>(),
+  {
+    updated: undefined,
+    backHref: '/',
+    backLabel: 'Zurück zur Startseite',
+  },
+)
 </script>
 
 <template>
   <main class="legal mx-auto w-full max-w-3xl px-6 pb-28 pt-32">
     <NuxtLink
-      to="/"
+      :to="backHref"
       class="inline-flex items-center gap-2 text-sm text-muted transition-colors duration-150 hover:text-fog"
     >
       <span aria-hidden="true">←</span>
-      Zurück zur Startseite
+      {{ backLabel }}
     </NuxtLink>
 
     <h1

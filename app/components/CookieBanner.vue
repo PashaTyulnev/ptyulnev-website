@@ -25,7 +25,7 @@ function dismiss() {
   >
     <div
       v-if="visible"
-      class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-2.5rem)] max-w-xl -translate-x-1/2 rounded-2xl border border-line-strong bg-ink-soft/90 px-5 py-4 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.7)] backdrop-blur-xl"
+      class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-2.5rem)] max-w-xl -translate-x-1/2 rounded-2xl border border-line-strong bg-ink-soft/90 px-5 py-4 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.7)] backdrop-blur-xl light:shadow-[0_8px_30px_-10px_rgba(10,10,15,0.25)]"
       role="region"
       aria-label="Cookie-Hinweis"
     >
@@ -42,7 +42,7 @@ function dismiss() {
         </p>
         <button
           type="button"
-          class="mt-0.5 shrink-0 rounded-lg border border-line bg-white/[0.06] px-4 py-1.5 text-xs font-medium text-fog transition-colors hover:bg-white/[0.12]"
+          class="mt-0.5 shrink-0 rounded-lg border border-line bg-white/[0.06] px-4 py-1.5 text-xs font-medium text-fog transition-colors hover:bg-white/[0.12] light:bg-black/[0.05] light:hover:bg-black/[0.1]"
           @click="dismiss"
         >
           OK

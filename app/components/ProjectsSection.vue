@@ -17,27 +17,27 @@ const projects: CaseStudy[] = [
     problem:
       'Dienstpläne, Zeiterfassung und Einsatznachweise wurden manuell in Excel gepflegt — fehleranfällig, unübersichtlich und schwer skalierbar.',
     solution:
-      'Eine individuelle Web-Anwendung für Sicherheitsdienste mit Schichtplanung, Mitarbeiterverwaltung, digitaler Zeiterfassung, Reporting und PDF-Auswertungen.',
+      'Eine individuelle Unternehmenssoftware für einen Sicherheitsdienst: Schichtplanung, Mitarbeiterverwaltung, digitale Zeiterfassung, Reporting und PDF-Auswertungen — zugeschnitten auf den bestehenden Betriebsablauf.',
     result:
-      'Weniger manuelle Planung, weniger Fehler und ein klarer Überblick über Mitarbeiter, Objekte, Schichten und Arbeitszeiten.',
+      'Weniger manuelle Planung, weniger Fehler in der Abrechnung und ein tagesaktueller Überblick über Mitarbeiter, Objekte, Schichten und Arbeitszeiten.',
   },
   {
     sector: 'ParkingSoft',
     problem:
       'Parkplatzbuchungen, Kundendaten und Verfügbarkeiten mussten digital sauber abgebildet und für den Alltag einfach bedienbar gemacht werden.',
     solution:
-      'Eine moderne Web-Anwendung für Parkplatzverwaltung mit Buchungsprozess, Verwaltungsoberfläche, REST-API-Anbindung und klarer Benutzerführung.',
+      'Eine Web-Anwendung für Parkplatzverwaltung mit Buchungsprozess, Verwaltungsoberfläche und über 20 externen und internen API-Integrationen — seit mehr als 4 Jahren produktiv im Einsatz.',
     result:
-      'Ein digitaler Ablauf von der Buchung bis zur Verwaltung — schneller, übersichtlicher und weniger abhängig von manueller Bearbeitung.',
+      'Über 40.000 verarbeitete Buchungen und ein durchgängig digitaler Ablauf von der Buchung bis zur Verwaltung — die Antwortzeit sank trotz wachsender Datenmenge von rund einer Minute auf etwa eine Sekunde.',
   },
   {
     sector: 'Shopware Plugins',
     problem:
       'Shopware-Prozesse wie Produktdaten, Bestellungen, Schnittstellen oder wiederkehrende Admin-Aufgaben waren zu manuell oder nicht passend automatisiert.',
     solution:
-      'Individuelle Shopware-Erweiterungen und Integrationen mit API-Anbindungen, Automatisierungen, Admin-Modulen und sauberer Backend-Logik.',
+      'Individuelle Plugins, Produkt- und Bestellschnittstellen sowie Massenverarbeitung und Datenbereinigung — inklusive automatisierter Admin-Prozesse, ohne den bestehenden Shop abzulösen.',
     result:
-      'Weniger manuelle Arbeit im Shop-Alltag, stabilere Prozesse und Erweiterungen, die exakt zum bestehenden Business passen.',
+      'Weniger manuelle Arbeit im Shop-Alltag, stabilere Prozesse und Erweiterungen, die exakt zum bestehenden System passen — ganz ohne unnötigen Systemwechsel.',
   },
 ]
 
@@ -66,7 +66,7 @@ const facets: { key: keyof CaseStudy; label: string }[] = [
           v-for="project in projects"
           :key="project.sector"
           data-reveal
-          class="reveal-init grid gap-6 rounded-2xl border border-line bg-white/[0.03] p-7 backdrop-blur-md transition-colors duration-300 hover:border-white/20 lg:grid-cols-[200px_1fr] lg:gap-10 lg:p-9"
+          class="reveal-init grid gap-6 rounded-2xl border border-line bg-white/[0.03] p-7 backdrop-blur-md transition-colors duration-300 hover:border-white/20 light:bg-black/[0.025] light:hover:border-black/15 lg:grid-cols-[200px_1fr] lg:gap-10 lg:p-9"
         >
           <div class="flex items-start">
             <span

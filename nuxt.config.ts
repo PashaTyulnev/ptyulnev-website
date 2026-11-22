@@ -6,6 +6,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
 
+  runtimeConfig: {
+    public: {
+      directusUrl: process.env.NUXT_PUBLIC_DIRECTUS_URL || 'https://cdn.ptyulnev.de',
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
@@ -22,20 +28,50 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Pavel Tyulnev — Web Apps, SaaS & Automations',
-      htmlAttrs: { lang: 'en' },
+      title: 'Pavel Tyulnev — Shopware 6 & individuelle Business-Software | Dresden',
+      htmlAttrs: { lang: 'de' },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
           content:
-            'Building web apps, SaaS products and automations with Symfony, Nuxt, Shopware and AI integrations.',
+            'Pavel Tyulnev — Softwareentwickler in Dresden. Shopware 6, individuelle Business-Software, API-Integrationen und Automatisierung, Bugfixing und Performance.',
+        },
+        {
+          name: 'keywords',
+          content:
+            'Pavel Tyulnev, Entwickler Dresden, Softwareentwickler Dresden, Shopware 6 Spezialist, Shopware Plugin Entwicklung, individuelle Softwareentwicklung, API-Integration, Automatisierung, Bugfixing, Performance-Optimierung',
         },
         { name: 'theme-color', content: '#050505' },
+        {
+          name: 'google-site-verification',
+          content: 'oMKGQendz2vQPukT3BfJj6-DuvHD-CmfqF2cHTF6TjI',
+        },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:locale', content: 'de_DE' },
+        {
+          property: 'og:title',
+          content: 'Pavel Tyulnev — Shopware 6 & individuelle Business-Software | Dresden',
+        },
+        {
+          property: 'og:description',
+          content:
+            'Pavel Tyulnev — Softwareentwickler in Dresden. Shopware 6, individuelle Business-Software, API-Integrationen und Automatisierung, Bugfixing und Performance.',
+        },
+      ],
+      script: [
+        {
+          // Runs before hydration so a saved light-theme preference never
+          // flashes the default dark theme first.
+          innerHTML:
+            "(function(){try{if(localStorage.getItem('theme')==='light'){document.documentElement.setAttribute('data-theme','light')}}catch(e){}})();",
+        },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {
           rel: 'preconnect',

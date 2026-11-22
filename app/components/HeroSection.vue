@@ -2,62 +2,45 @@
 import { computed, nextTick, onMounted, ref } from 'vue'
 import type { ServiceCardItem } from '~/components/ServiceCard.vue'
 
-type BgVariant = 'robot' | 'gol' | 'eco'
-const bgVariant = ref<BgVariant>('robot')
-const bgSeed    = ref(0x9e3779b9)
-
 /**
- * Hero with the Spline robot as the visual centre, framed by six floating
- * service cards. Hovering a card draws an animated data-stream line to the
- * robot. Cards are the primary navigation to the services section.
+ * Hero framed by four floating service cards; the animated background is the
+ * site-wide particle ecosystem mounted once in app.vue. Hovering a card
+ * draws an animated data-stream line toward the centre. Cards are the
+ * primary navigation to the services section.
  */
 const root = ref<HTMLElement | null>(null)
 
 const leftCards: ServiceCardItem[] = [
   {
-    id: 'automation',
-    title: 'Prozesse automatisieren',
-    description: 'Manuelle Abläufe eliminieren und Zeit zurückgewinnen.',
+    id: 'shopware',
+    title: 'Shopware 6 Lösungen',
+    description: 'Plugin-Entwicklung, individuelle Erweiterungen und Schnittstellen für Ihren Shop.',
     anchor: '#leistungen',
-    icon: 'automation',
+    icon: 'shopware',
   },
   {
-    id: 'ai',
-    title: 'KI integrieren',
-    description: 'Intelligenz dort einsetzen, wo sie echten Nutzen schafft.',
+    id: 'custom-software',
+    title: 'Individuelle Software',
+    description: 'Ich löse Geschäftsprobleme mit maßgeschneiderten Tools — Zeiterfassung, Dienstplanung, Auswertungen.',
     anchor: '#leistungen',
-    icon: 'ai',
-  },
-  {
-    id: 'website',
-    title: 'Webseiten entwickeln',
-    description: 'Hochwertige Auftritte, die Vertrauen schaffen.',
-    anchor: '#leistungen',
-    icon: 'website',
+    icon: 'custom-software',
   },
 ]
 
 const rightCards: ServiceCardItem[] = [
   {
-    id: 'webapp',
-    title: 'Web Apps entwickeln',
-    description: 'Individuelle Anwendungen für echte Geschäftsprozesse.',
+    id: 'api-integration',
+    title: 'API-Integrationen und Automatisierung',
+    description: 'Schnittstellen zwischen Systemen, automatisierte Abläufe.',
     anchor: '#leistungen',
-    icon: 'webapp',
+    icon: 'api-integration',
   },
   {
-    id: 'systems',
-    title: 'Systeme verbinden',
-    description: 'Bestehende Tools nahtlos miteinander verknüpfen.',
+    id: 'bugfixing',
+    title: 'Bugfixing und Performance',
+    description: 'Schnelle Fehlerbehebung und spürbar bessere Performance in bestehendem Code.',
     anchor: '#leistungen',
-    icon: 'systems',
-  },
-  {
-    id: 'consulting',
-    title: 'Technische Beratung',
-    description: 'Architektur und Entscheidungen, die langfristig tragen.',
-    anchor: '#leistungen',
-    icon: 'consulting',
+    icon: 'bugfixing',
   },
 ]
 
@@ -97,10 +80,6 @@ function onCardDeactivate(): void {
 const { $gsap } = useNuxtApp()
 
 onMounted(async () => {
-  const r = Math.random()
-  bgVariant.value = r < 0.333 ? 'robot' : r < 0.667 ? 'gol' : 'eco'
-  bgSeed.value    = (Math.random() * 0xffffffff) >>> 0
-
   // Wait for the template headline overlay (v-if) to mount before querying
   // reveal targets — otherwise those elements stay at opacity: 0 forever.
   await nextTick()
@@ -127,49 +106,43 @@ onMounted(async () => {
   <section
     id="top"
     ref="root"
-    class="relative flex min-h-screen flex-col overflow-hidden bg-ink"
+    class="relative flex min-h-screen flex-col overflow-hidden"
   >
-    <!-- Background — randomly robot, Game of Life, or Particle Ecosystem -->
-    <SplineRobot v-if="bgVariant === 'robot'" />
-    <div v-else class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-      <ClientOnly>
-        <TemplatesGameOfLifeBackground
-          v-if="bgVariant === 'gol'"
-          :seed="bgSeed"
-        />
-        <TemplatesParticleEcosystemBackground
-          v-else
-          :seed="bgSeed"
-        />
-      </ClientOnly>
-      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/40 to-ink/90" />
-    </div>
-
-    <!-- Template variants (gol/eco): headline centred exactly in the section
-         on md+. The robot variant keeps its original top-aligned headline. -->
+    <!-- Left transparent so the site-wide particle ecosystem (app.vue) shows
+         through; this gradient only lifts text contrast over it. Kept light
+         enough that each random preset's colour/structure stays legible here
+         too — it was previously dark enough to wash every preset into the
+         same grey. -->
     <div
-      v-if="bgVariant !== 'robot'"
+      class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-ink/25 via-ink/15 to-ink/70"
+      aria-hidden="true"
+    />
+
+    <!-- Headline centred exactly in the section on md+; cards flank it. -->
+    <div
       class="pointer-events-none absolute inset-0 z-20 hidden flex-col items-center justify-center px-6 text-center md:flex"
     >
       <span
         data-reveal
-        class="reveal-init mb-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur-sm"
+        class="reveal-init mb-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur-sm light:bg-black/[0.03]"
       >
         <span class="size-1.5 rounded-full bg-fog/80" />
-        Digitalisierung · Automatisierung · KI
+        Softwareentwickler in Dresden
       </span>
       <h1
         data-reveal
         class="reveal-init max-w-[18ch] text-3xl font-semibold leading-[1.06] tracking-[-0.04em] text-fog sm:text-5xl lg:text-[3.75rem]"
       >
-        Software, die Arbeit spart.
+        Shopware und individuelle Software, die Prozesse vereinfacht.
       </h1>
       <p
         data-reveal
         class="reveal-init mt-5 max-w-[44ch] text-sm text-muted sm:text-base"
       >
-        Ich unterstütze Unternehmen bei der Entwicklung von Webanwendungen,
-        Automatisierungslösungen und KI-gestützten Prozessen.
+        Ich entwickle Shopware-6-Plugins, individuelle Webanwendungen und
+        Schnittstellen für Unternehmen – von der gezielten Erweiterung bis
+        zur langfristig wartbaren Lösung. Sitz in Dresden, deutschlandweit
+        tätig.
       </p>
     </div>
 
@@ -205,38 +178,40 @@ onMounted(async () => {
       />
     </svg>
 
-    <!-- Content layer: pointer-events-none so the robot tracks the mouse in
-         the centre; cards and CTAs re-enable pointer events individually. -->
+    <!-- Content layer: pointer-events-none so the background can receive mouse
+         events in the centre; cards and CTAs re-enable pointer events individually. -->
     <div
       class="pointer-events-none relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-6 pb-10 pt-24 lg:px-10"
     >
-      <!-- Headline: always on mobile; on md+ only for the robot variant (other variants place it between the cards) -->
-      <div class="flex flex-col items-center text-center" :class="bgVariant !== 'robot' ? 'md:hidden' : ''">
+      <!-- Headline: always on mobile; on md+ it's placed between the cards via the overlay above -->
+      <div class="flex flex-col items-center text-center md:hidden">
         <span
           data-reveal
-          class="reveal-init mb-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur-sm"
+          class="reveal-init mb-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur-sm light:bg-black/[0.03]"
         >
           <span class="size-1.5 rounded-full bg-fog/80" />
-          Digitalisierung · Automatisierung · KI
+          Softwareentwickler in Dresden
         </span>
 
         <h1
           data-reveal
           class="reveal-init max-w-[18ch] text-3xl font-semibold leading-[1.06] tracking-[-0.04em] text-fog sm:text-5xl lg:text-[3.75rem]"
         >
-          Software, die Arbeit spart.
+          Shopware und individuelle Software, die Prozesse vereinfacht.
         </h1>
 
         <p
           data-reveal
           class="reveal-init mt-5 max-w-[44ch] text-sm text-muted sm:text-base"
         >
-          Ich unterstütze Unternehmen bei der Entwicklung von Webanwendungen,
-          Automatisierungslösungen und KI-gestützten Prozessen.
+          Ich entwickle Shopware-6-Plugins, individuelle Webanwendungen und
+          Schnittstellen für Unternehmen – von der gezielten Erweiterung bis
+          zur langfristig wartbaren Lösung. Sitz in Dresden, deutschlandweit
+          tätig.
         </p>
       </div>
 
-      <!-- Desktop: cards flanking the robot -->
+      <!-- Desktop: cards flanking the centre -->
       <div
         class="mt-8 hidden flex-1 items-center justify-between gap-6 lg:flex"
       >
@@ -255,8 +230,7 @@ onMounted(async () => {
           </div>
         </div>
 
-        <!-- Centre gap: the robot floats here; for template variants the
-             headline is centred via the section-wide overlay above. -->
+        <!-- Centre gap: headline is centred here via the section-wide overlay above. -->
         <div class="min-w-[22rem] flex-1" aria-hidden="true" />
 
         <div class="flex w-[15.5rem] shrink-0 flex-col gap-5 xl:w-[17rem]">
@@ -275,7 +249,7 @@ onMounted(async () => {
         </div>
       </div>
 
-      <!-- Tablet: cards closer to the robot -->
+      <!-- Tablet: cards closer to the centre -->
       <div
         class="mt-8 hidden flex-1 items-center justify-center gap-4 md:flex lg:hidden"
       >
@@ -312,7 +286,7 @@ onMounted(async () => {
         </div>
       </div>
 
-      <!-- Mobile: cards below the robot -->
+      <!-- Mobile: cards below the centre -->
       <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 md:hidden">
         <div
           v-for="card in allCards"

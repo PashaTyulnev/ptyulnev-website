@@ -18,9 +18,9 @@ const tag = computed(() => (props.href ? 'a' : 'button'))
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-fog text-ink hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(255,255,255,0.45)]',
+    'bg-fog text-ink hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(255,255,255,0.45)] light:hover:shadow-[0_12px_40px_-12px_rgba(10,10,15,0.35)]',
   secondary:
-    'border border-line-strong bg-white/[0.02] text-fog hover:border-white/30 hover:bg-white/[0.06]',
+    'border border-line-strong bg-white/[0.02] text-fog hover:border-white/30 hover:bg-white/[0.06] light:bg-black/[0.02] light:hover:border-black/20 light:hover:bg-black/[0.05]',
 }
 </script>
 

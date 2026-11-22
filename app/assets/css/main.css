@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+/* Lets utilities use `light:` the same way Tailwind's built-in `dark:` works,
+   scoped to our manual [data-theme="light"] toggle instead of a media query. */
+@custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
+
 /* ---------- Design tokens (Tailwind v4 theme) ---------- */
 @theme {
   --color-ink: #050505;
@@ -16,12 +20,33 @@
   --tracking-tightest: -0.04em;
 }
 
+/* Light theme: same tokens, flipped. Everything built on top of ink/fog/
+   muted/dim/line adapts automatically — no per-component dark: pairs needed
+   for those. Only raw white/black tints (glass overlays, glows) need an
+   explicit `light:` override, done at each call site. */
+:root[data-theme='light'] {
+  --color-ink: #f6f6f8;
+  --color-ink-soft: #ffffff;
+  --color-fog: #0b0b0d;
+  --color-muted: #4b4b55;
+  --color-dim: #83838d;
+  --color-line: rgba(10, 10, 15, 0.08);
+  --color-line-strong: rgba(10, 10, 15, 0.14);
+}
+
 /* ---------- Base ---------- */
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    color-scheme: dark;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  html[data-theme='light'] {
+    color-scheme: light;
   }
 
   body {
@@ -30,6 +55,7 @@
     font-family: var(--font-sans);
     letter-spacing: -0.011em;
     overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 }
 
