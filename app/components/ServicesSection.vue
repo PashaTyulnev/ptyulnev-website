@@ -1,16 +1,19 @@
 <script setup lang="ts">
 const services = [
   {
+    illustration: resolveComponent('IllustrationsDigitize'),
     title: 'Abläufe digitalisieren',
     text: 'Aus Excel-Listen, Papierformularen und Handarbeit werden interne Tools, die genau zu Ihrem Ablauf passen.',
     points: ['Interne Web-Tools', 'Automatische Importe und Exporte', 'Auswertungen und PDFs'],
   },
   {
+    illustration: resolveComponent('IllustrationsShopware'),
     title: 'Shopware betreuen',
     text: 'Ich halte Ihren Shop aktuell und erweitere ihn dort, wo Standard-Plugins nicht reichen.',
     points: ['Wartung und Updates', 'Individuelle Plugins', 'Performance-Optimierung'],
   },
   {
+    illustration: resolveComponent('IllustrationsTakeover'),
     title: 'Software übernehmen',
     text: 'Wenn der bisherige Entwickler nicht mehr da ist, arbeite ich mich ein und bringe das System wieder in sichere Hände.',
     points: ['Code verstehen und dokumentieren', 'Fehler und Engpässe beheben', 'Weiterentwicklung'],
@@ -32,6 +35,7 @@ const services = [
           :key="service.title"
           class="flex flex-col rounded-xl border border-line bg-surface p-7"
         >
+          <component :is="service.illustration" class="mb-6 w-full text-fg" />
           <span class="text-sm font-semibold tabular-nums text-accent">0{{ index + 1 }}</span>
           <h3 class="mt-3 text-xl font-semibold tracking-tight">{{ service.title }}</h3>
           <p class="mb-6 mt-3 text-[0.95rem] leading-relaxed text-muted">{{ service.text }}</p>

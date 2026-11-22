@@ -30,10 +30,16 @@ const problems = [
 <template>
   <section class="border-t border-line py-24">
     <div class="mx-auto max-w-6xl px-6">
-      <SectionHeading
-        eyebrow="Kommt Ihnen das bekannt vor?"
-        title="Typische Probleme, mit denen Kunden zu mir kommen."
-      />
+      <div class="grid gap-10 lg:grid-cols-[1fr_380px] lg:items-end">
+        <SectionHeading
+          eyebrow="Kommt Ihnen das bekannt vor?"
+          title="Typische Probleme, mit denen Kunden zu mir kommen."
+        />
+        <figure>
+          <IllustrationsPerformance class="w-full text-fg" />
+          <figcaption class="mt-2 text-sm text-dim">Aus einem Projekt: Praxis-Software für ca. 200 Zahnarztpraxen.</figcaption>
+        </figure>
+      </div>
       <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <article
           v-for="problem in problems"
