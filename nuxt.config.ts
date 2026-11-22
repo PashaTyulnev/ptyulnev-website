@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Pavel Tyulnev — Abläufe digitalisieren, Shopware betreuen, Software übernehmen | Dresden',
+      title: 'Pavel Tyulnev — Betriebsabläufe digitalisieren, individuelle Software, Shopware | Dresden',
       htmlAttrs: { lang: 'de' },
       meta: [
         { charset: 'utf-8' },
@@ -26,7 +26,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Softwareentwickler in Dresden: manuelle Abläufe digitalisieren, Shopware-Shops betreuen und bestehende Software übernehmen. Einstieg mit dem Prozess- und Softwarecheck.',
+            'Softwareentwickler in Dresden: Betriebsabläufe wie Dienstplanung, Zeiterfassung und Auswertungen digitalisieren, Daten verbinden, Shopware entwickeln und bestehende Software übernehmen.',
         },
         {
           name: 'keywords',
@@ -42,12 +42,12 @@ export default defineNuxtConfig({
         { property: 'og:locale', content: 'de_DE' },
         {
           property: 'og:title',
-          content: 'Pavel Tyulnev — Abläufe digitalisieren, Shopware betreuen, Software übernehmen | Dresden',
+          content: 'Pavel Tyulnev — Betriebsabläufe digitalisieren, individuelle Software, Shopware | Dresden',
         },
         {
           property: 'og:description',
           content:
-            'Softwareentwickler in Dresden: manuelle Abläufe digitalisieren, Shopware-Shops betreuen und bestehende Software übernehmen. Einstieg mit dem Prozess- und Softwarecheck.',
+            'Softwareentwickler in Dresden: Betriebsabläufe wie Dienstplanung, Zeiterfassung und Auswertungen digitalisieren, Daten verbinden, Shopware entwickeln und bestehende Software übernehmen.',
         },
       ],
       script: [

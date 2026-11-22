@@ -5,8 +5,16 @@ const problems = [
     text: 'Mehrere Leute pflegen dieselbe Liste, und niemand weiß genau, welche Version stimmt.',
   },
   {
+    title: 'Dienstpläne entstehen von Hand',
+    text: 'Schichten, Urlaube und Stunden werden auf Papier oder in Tabellen geplant und am Monatsende mühsam abgerechnet.',
+  },
+  {
     title: 'Daten werden abgetippt',
     text: 'Papierformulare, E-Mails und Copy-Paste von einem System ins nächste kosten jeden Tag Zeit.',
+  },
+  {
+    title: 'Zahlen liegen überall verstreut',
+    text: 'Daten aus Programmen, Geräten und Dateien lassen sich nur mühsam zusammenführen und auswerten.',
   },
   {
     title: 'Der Entwickler ist weg',
@@ -14,15 +22,7 @@ const problems = [
   },
   {
     title: 'Die Software ist zu langsam',
-    text: 'Suchen, Listen oder der Shop-Admin brauchen Sekunden, wo es Millisekunden sein könnten.',
-  },
-  {
-    title: 'Shopware-Updates werden verschoben',
-    text: 'Plugins sind veraltet, Anpassungen undokumentiert, und vor dem nächsten Update graut es allen.',
-  },
-  {
-    title: 'Importe hängen ständig',
-    text: 'Produkt- oder Bestelldaten kommen per CSV, und jedes Mal muss jemand von Hand nachbessern.',
+    text: 'Suchen, Listen und Auswertungen brauchen Sekunden oder Minuten, wo es Millisekunden sein könnten.',
   },
 ]
 </script>

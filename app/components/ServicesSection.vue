@@ -2,15 +2,21 @@
 const services = [
   {
     illustration: resolveComponent('IllustrationsDigitize'),
-    title: 'Abläufe digitalisieren',
-    text: 'Aus Excel-Listen, Papierformularen und Handarbeit werden interne Tools, die genau zu Ihrem Ablauf passen.',
-    points: ['Interne Web-Tools', 'Automatische Importe und Exporte', 'Auswertungen und PDFs'],
+    title: 'Betriebsabläufe digitalisieren',
+    text: 'Aus Excel-Listen, Papierformularen und Handarbeit werden Programme, die genau zu Ihrem Betrieb passen.',
+    points: ['Dienstplanung und Zeiterfassung', 'Interne Verwaltungs-Tools', 'Rechnungen, Angebote und PDFs'],
+  },
+  {
+    illustration: resolveComponent('IllustrationsIntegrate'),
+    title: 'Daten verbinden und auswerten',
+    text: 'Daten aus verschiedenen Systemen, Dateien und Geräten an einer Stelle sammeln und verständlich auswerten.',
+    points: ['Schnittstellen und Importe', 'Automatische Abgleiche', 'Auswertungen und Reports'],
   },
   {
     illustration: resolveComponent('IllustrationsShopware'),
-    title: 'Shopware betreuen',
-    text: 'Ich halte Ihren Shop aktuell und erweitere ihn dort, wo Standard-Plugins nicht reichen.',
-    points: ['Wartung und Versionsupdates', 'Individuelle Plugins und Themes', 'Template- und Dokument-Anpassungen', 'Migration von Shopware 5'],
+    title: 'Shopware entwickeln',
+    text: 'Plugins, Anpassungen und Wartung für Shopware 6, dort wo Standard-Erweiterungen nicht reichen.',
+    points: ['Individuelle Plugins und Themes', 'Wartung und Versionsupdates', 'Migration von Shopware 5'],
   },
   {
     illustration: resolveComponent('IllustrationsTakeover'),
@@ -26,16 +32,16 @@ const services = [
     <div class="mx-auto max-w-6xl px-6">
       <SectionHeading
         eyebrow="Leistungen"
-        title="Drei Dinge, die ich gut kann."
+        title="Software, die zu Ihrem Betrieb passt."
         lead="Der gemeinsame Nenner: Abläufe verstehen, Fehler finden und passende Software bauen oder verbessern."
       />
-      <div class="mt-12 grid gap-4 lg:grid-cols-3">
+      <div class="mt-12 grid gap-4 md:grid-cols-2">
         <article
           v-for="(service, index) in services"
           :key="service.title"
           class="flex flex-col rounded-xl border border-line bg-ink-soft p-7"
         >
-          <component :is="service.illustration" class="mb-6 w-full text-fog" />
+          <component :is="service.illustration" class="mb-6 w-full max-w-md text-fog" />
           <span class="text-sm font-semibold tabular-nums text-accent">0{{ index + 1 }}</span>
           <h3 class="mt-3 text-xl font-semibold tracking-tight">{{ service.title }}</h3>
           <p class="mb-6 mt-3 text-[0.95rem] leading-relaxed text-muted">{{ service.text }}</p>

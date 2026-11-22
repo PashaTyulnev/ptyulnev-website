@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useHead({
-  title: 'Pavel Tyulnev — Abläufe digitalisieren, Shopware betreuen, Software übernehmen | Dresden',
+  title: 'Pavel Tyulnev — Betriebsabläufe digitalisieren, individuelle Software, Shopware | Dresden',
   link: [{ rel: 'canonical', href: 'https://ptyulnev.de/' }],
   script: [
     {
@@ -19,7 +19,7 @@ useHead({
         },
         areaServed: ['Dresden', 'DE'],
         description:
-          'Softwareentwickler in Dresden. Ich digitalisiere manuelle Abläufe, betreue Shopware-6-Shops und übernehme bestehende Software, wenn der bisherige Entwickler weg ist.',
+          'Softwareentwickler in Dresden. Ich digitalisiere Betriebsabläufe wie Dienstplanung, Zeiterfassung und Auswertungen, verbinde Datenquellen, entwickle für Shopware 6 und übernehme bestehende Software.',
         knowsAbout: [
           'Shopware 6',
           'Shopware Plugin-Entwicklung',
