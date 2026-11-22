@@ -3,7 +3,6 @@ const stats = [
   { value: '8+', label: 'Jahre Berufserfahrung' },
   { value: '20+', label: 'API-Integrationen' },
   { value: '4+', label: 'Jahre produktive SaaS-Entwicklung' },
-  { value: 'Min. → Sek.', label: 'Ladezeiten verbessert' },
 ]
 </script>
 
@@ -26,7 +25,7 @@ const stats = [
       <BaseButton href="/fallstudien" variant="secondary">Fallstudien ansehen</BaseButton>
     </div>
 
-    <dl class="mt-16 grid grid-cols-2 gap-6 border-t border-line pt-8 sm:grid-cols-4">
+    <dl class="mt-16 grid grid-cols-2 gap-6 border-t border-line pt-8 sm:grid-cols-3">
       <div v-for="stat in stats" :key="stat.label" class="flex flex-col">
         <dt class="order-2 text-sm text-dim">{{ stat.label }}</dt>
         <dd class="order-1 text-2xl font-semibold tracking-tight">{{ stat.value }}</dd>

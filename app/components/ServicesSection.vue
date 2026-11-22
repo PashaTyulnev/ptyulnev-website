@@ -22,7 +22,7 @@ const services = [
     illustration: resolveComponent('IllustrationsTakeover'),
     title: 'Software übernehmen',
     text: 'Wenn der bisherige Entwickler nicht mehr da ist, arbeite ich mich ein und bringe das System wieder in sichere Hände.',
-    points: ['Code verstehen und dokumentieren', 'Bugfixing und Performance', 'Weiterentwicklung'],
+    points: ['Code verstehen und dokumentieren', 'Fehler finden und beheben', 'Weiterentwicklung'],
   },
 ]
 </script>

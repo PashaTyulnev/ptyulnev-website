@@ -21,8 +21,8 @@ const problems = [
     text: 'Die Software läuft, aber niemand weiß mehr genau, wie. Jede Änderung fühlt sich riskant an.',
   },
   {
-    title: 'Die Software ist zu langsam',
-    text: 'Suchen, Listen und Auswertungen brauchen Sekunden oder Minuten, wo es Millisekunden sein könnten.',
+    title: 'Standardsoftware passt nicht',
+    text: 'Das gekaufte Programm zwingt den Betrieb in fremde Abläufe, und der Rest landet doch wieder in Excel.',
   },
 ]
 </script>
@@ -30,19 +30,10 @@ const problems = [
 <template>
   <section class="border-t border-line py-24">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="grid gap-10 lg:grid-cols-[1fr_380px] lg:items-end">
-        <SectionHeading
-          eyebrow="Kommt Ihnen das bekannt vor?"
-          title="Typische Probleme, mit denen Kunden zu mir kommen."
-        />
-        <figure>
-          <IllustrationsPerformance class="w-full text-fog" />
-          <figcaption class="mt-2 text-sm text-dim">
-            Aus einem Projekt: Praxis-Software für ca. 200 Zahnarztpraxen.
-            <NuxtLink to="/fallstudien" class="text-accent hover:underline">Zu den Fallstudien</NuxtLink>
-          </figcaption>
-        </figure>
-      </div>
+      <SectionHeading
+        eyebrow="Kommt Ihnen das bekannt vor?"
+        title="Typische Probleme, mit denen Kunden zu mir kommen."
+      />
       <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <article
           v-for="problem in problems"
