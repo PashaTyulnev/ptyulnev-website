@@ -43,7 +43,7 @@ useHead({
 
     <dl
       v-if="facts.length"
-      class="my-8 grid grid-cols-2 gap-x-6 gap-y-4 rounded-2xl border border-line bg-white/[0.03] p-6 light:bg-black/[0.025] sm:grid-cols-3"
+      class="my-8 grid grid-cols-2 gap-x-6 gap-y-4 rounded-2xl border border-line bg-ink-soft p-6 sm:grid-cols-3"
     >
       <div v-for="f in facts" :key="f.label">
         <dt class="text-[0.7rem] font-medium uppercase tracking-[0.14em] text-dim">{{ f.label }}</dt>

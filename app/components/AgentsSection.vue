@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-const root = ref<HTMLElement | null>(null)
-useScrollReveal(root)
 
 const { data: agents } = await useAgents()
 
@@ -45,10 +43,9 @@ onBeforeUnmount(() => {
   <section
     v-if="agents.length"
     id="agents"
-    ref="root"
-    class="relative border-t border-line py-28 lg:py-36"
+    class="relative border-t border-line py-24"
   >
-    <div class="relative mx-auto w-full max-w-[1200px] px-6">
+    <div class="relative mx-auto w-full max-w-6xl px-6">
       <SectionHeading
         eyebrow="Agents"
         title="KI-Agenten zum Copy-Paste."
@@ -59,10 +56,9 @@ onBeforeUnmount(() => {
         <article
           v-for="agent in agents"
           :key="agent.slug"
-          data-reveal
           role="button"
           tabindex="0"
-          class="reveal-init group relative flex cursor-pointer flex-col gap-4 overflow-hidden rounded-2xl border border-line bg-white/[0.03] p-7 text-left backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05] light:bg-black/[0.025] light:hover:border-black/15 light:hover:bg-black/[0.04]"
+          class="group relative flex cursor-pointer flex-col gap-4 overflow-hidden rounded-2xl border border-line bg-ink-soft p-7 text-left transition-all duration-300 hover:border-line-strong"
           @click="openAgent(agent)"
           @keydown.enter="openAgent(agent)"
           @keydown.space.prevent="openAgent(agent)"
@@ -96,7 +92,7 @@ onBeforeUnmount(() => {
     <Teleport to="body">
       <div
         v-if="activeAgent"
-        class="fixed inset-0 z-100 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm light:bg-black/40"
+        class="fixed inset-0 z-100 flex items-center justify-center bg-black/70 p-4 light:bg-black/40"
         @click.self="closeAgent"
       >
         <div

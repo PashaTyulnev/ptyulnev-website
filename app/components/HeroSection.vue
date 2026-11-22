@@ -1,321 +1,34 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref } from 'vue'
-import type { ServiceCardItem } from '~/components/ServiceCard.vue'
-
-/**
- * Hero framed by four floating service cards; the animated background is the
- * site-wide particle ecosystem mounted once in app.vue. Hovering a card
- * draws an animated data-stream line toward the centre. Cards are the
- * primary navigation to the services section.
- */
-const root = ref<HTMLElement | null>(null)
-
-const leftCards: ServiceCardItem[] = [
-  {
-    id: 'shopware',
-    title: 'Shopware 6 Lösungen',
-    description: 'Plugin-Entwicklung, individuelle Erweiterungen und Schnittstellen für Ihren Shop.',
-    anchor: '#leistungen',
-    icon: 'shopware',
-  },
-  {
-    id: 'custom-software',
-    title: 'Individuelle Software',
-    description: 'Ich löse Geschäftsprobleme mit maßgeschneiderten Tools — Zeiterfassung, Dienstplanung, Auswertungen.',
-    anchor: '#leistungen',
-    icon: 'custom-software',
-  },
+const stats = [
+  { value: '8+', label: 'Jahre Berufserfahrung' },
+  { value: '20+', label: 'API-Integrationen' },
+  { value: '4+', label: 'Jahre produktive SaaS-Entwicklung' },
+  { value: 'Min. → Sek.', label: 'Ladezeiten verbessert' },
 ]
-
-const rightCards: ServiceCardItem[] = [
-  {
-    id: 'api-integration',
-    title: 'API-Integrationen und Automatisierung',
-    description: 'Schnittstellen zwischen Systemen, automatisierte Abläufe.',
-    anchor: '#leistungen',
-    icon: 'api-integration',
-  },
-  {
-    id: 'bugfixing',
-    title: 'Bugfixing und Performance',
-    description: 'Schnelle Fehlerbehebung und spürbar bessere Performance in bestehendem Code.',
-    anchor: '#leistungen',
-    icon: 'bugfixing',
-  },
-]
-
-const allCards = computed(() => [...leftCards, ...rightCards])
-
-interface ConnectionLine {
-  x1: number
-  y1: number
-  x2: number
-  y2: number
-}
-
-const activeConnection = ref<ConnectionLine | null>(null)
-
-function onCardActivate(element: HTMLElement): void {
-  if (!root.value) return
-
-  const section = root.value.getBoundingClientRect()
-  const card = element.getBoundingClientRect()
-
-  const cardCenterX = card.left + card.width / 2 - section.left
-  const cardCenterY = card.top + card.height / 2 - section.top
-  const robotX = section.width / 2
-  const robotY = section.height * 0.46
-
-  const isLeft = cardCenterX < robotX
-  const x1 = isLeft ? card.right - section.left : card.left - section.left
-  const y1 = cardCenterY
-
-  activeConnection.value = { x1, y1, x2: robotX, y2: robotY }
-}
-
-function onCardDeactivate(): void {
-  activeConnection.value = null
-}
-
-const { $gsap } = useNuxtApp()
-
-onMounted(async () => {
-  // Wait for the template headline overlay (v-if) to mount before querying
-  // reveal targets — otherwise those elements stay at opacity: 0 forever.
-  await nextTick()
-  if (!root.value) return
-
-  const targets = root.value.querySelectorAll<HTMLElement>('[data-reveal]')
-
-  const prefersReducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)',
-  ).matches
-
-  if (prefersReducedMotion || !$gsap) {
-    targets.forEach((el) => el.classList.remove('reveal-init'))
-    return
-  }
-
-  $gsap
-    .timeline({ defaults: { ease: 'power3.out', duration: 0.9 } })
-    .to(targets, { opacity: 1, y: 0, stagger: 0.1, delay: 0.2 })
-})
 </script>
 
 <template>
-  <section
-    id="top"
-    ref="root"
-    class="relative flex min-h-screen flex-col overflow-hidden"
-  >
-    <!-- Left transparent so the site-wide particle ecosystem (app.vue) shows
-         through; this gradient only lifts text contrast over it. Kept light
-         enough that each random preset's colour/structure stays legible here
-         too — it was previously dark enough to wash every preset into the
-         same grey. -->
-    <div
-      class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-ink/25 via-ink/15 to-ink/70"
-      aria-hidden="true"
-    />
-
-    <!-- Headline centred exactly in the section on md+; cards flank it. -->
-    <div
-      class="pointer-events-none absolute inset-0 z-20 hidden flex-col items-center justify-center px-6 text-center md:flex"
-    >
-      <span
-        data-reveal
-        class="reveal-init mb-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur-sm light:bg-black/[0.03]"
-      >
-        <span class="size-1.5 rounded-full bg-fog/80" />
-        Softwareentwickler in Dresden
-      </span>
-      <h1
-        data-reveal
-        class="reveal-init max-w-[18ch] text-3xl font-semibold leading-[1.06] tracking-[-0.04em] text-fog sm:text-5xl lg:text-[3.75rem]"
-      >
-        Shopware und individuelle Software, die Prozesse vereinfacht.
-      </h1>
-      <p
-        data-reveal
-        class="reveal-init mt-5 max-w-[44ch] text-sm text-muted sm:text-base"
-      >
-        Ich entwickle Shopware-6-Plugins, individuelle Webanwendungen und
-        Schnittstellen für Unternehmen – von der gezielten Erweiterung bis
-        zur langfristig wartbaren Lösung. Sitz in Dresden, deutschlandweit
-        tätig.
-      </p>
+  <section id="top" class="mx-auto max-w-6xl px-6 pb-20 pt-36 sm:pt-44">
+    <p class="text-sm font-medium text-accent">
+      Softwareentwickler in Dresden, für E-Commerce und Betriebe mit vielen Abläufen
+    </p>
+    <h1 class="mt-5 max-w-[16ch] text-4xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-6xl">
+      Ihr Shop läuft. Die Abläufe dahinter auch?
+    </h1>
+    <p class="mt-6 max-w-[52ch] text-lg text-muted">
+      Ich digitalisiere manuelle Abläufe, kümmere mich um Ihren Shopware-Shop
+      und übernehme Software, wenn der bisherige Entwickler weg ist.
+    </p>
+    <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+      <BaseButton href="#check">Prozess- und Softwarecheck anfragen</BaseButton>
+      <BaseButton href="/fallstudien" variant="secondary">Fallstudien ansehen</BaseButton>
     </div>
 
-    <!-- Animated data-stream line (desktop only). -->
-    <svg
-      class="pointer-events-none absolute inset-0 z-[5] hidden lg:block"
-      aria-hidden="true"
-    >
-      <defs>
-        <linearGradient
-          id="stream-gradient"
-          gradientUnits="userSpaceOnUse"
-          :x1="activeConnection?.x1 ?? 0"
-          :y1="activeConnection?.y1 ?? 0"
-          :x2="activeConnection?.x2 ?? 0"
-          :y2="activeConnection?.y2 ?? 0"
-        >
-          <stop offset="0%" stop-color="rgba(99,102,241,0.15)" />
-          <stop offset="50%" stop-color="rgba(147,197,253,0.55)" />
-          <stop offset="100%" stop-color="rgba(99,102,241,0.15)" />
-        </linearGradient>
-      </defs>
-
-      <line
-        v-if="activeConnection"
-        :x1="activeConnection.x1"
-        :y1="activeConnection.y1"
-        :x2="activeConnection.x2"
-        :y2="activeConnection.y2"
-        stroke="url(#stream-gradient)"
-        stroke-width="1"
-        class="animate-line-pulse"
-      />
-    </svg>
-
-    <!-- Content layer: pointer-events-none so the background can receive mouse
-         events in the centre; cards and CTAs re-enable pointer events individually. -->
-    <div
-      class="pointer-events-none relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-6 pb-10 pt-24 lg:px-10"
-    >
-      <!-- Headline: always on mobile; on md+ it's placed between the cards via the overlay above -->
-      <div class="flex flex-col items-center text-center md:hidden">
-        <span
-          data-reveal
-          class="reveal-init mb-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur-sm light:bg-black/[0.03]"
-        >
-          <span class="size-1.5 rounded-full bg-fog/80" />
-          Softwareentwickler in Dresden
-        </span>
-
-        <h1
-          data-reveal
-          class="reveal-init max-w-[18ch] text-3xl font-semibold leading-[1.06] tracking-[-0.04em] text-fog sm:text-5xl lg:text-[3.75rem]"
-        >
-          Shopware und individuelle Software, die Prozesse vereinfacht.
-        </h1>
-
-        <p
-          data-reveal
-          class="reveal-init mt-5 max-w-[44ch] text-sm text-muted sm:text-base"
-        >
-          Ich entwickle Shopware-6-Plugins, individuelle Webanwendungen und
-          Schnittstellen für Unternehmen – von der gezielten Erweiterung bis
-          zur langfristig wartbaren Lösung. Sitz in Dresden, deutschlandweit
-          tätig.
-        </p>
+    <dl class="mt-16 grid grid-cols-2 gap-6 border-t border-line pt-8 sm:grid-cols-4">
+      <div v-for="stat in stats" :key="stat.label" class="flex flex-col">
+        <dt class="order-2 text-sm text-dim">{{ stat.label }}</dt>
+        <dd class="order-1 text-2xl font-semibold tracking-tight">{{ stat.value }}</dd>
       </div>
-
-      <!-- Desktop: cards flanking the centre -->
-      <div
-        class="mt-8 hidden flex-1 items-center justify-between gap-6 lg:flex"
-      >
-        <div class="flex w-[15.5rem] shrink-0 flex-col gap-5 xl:w-[17rem]">
-          <div
-            v-for="card in leftCards"
-            :key="card.id"
-            data-reveal
-            class="reveal-init pointer-events-auto"
-          >
-            <ServiceCard
-              v-bind="card"
-              @activate="onCardActivate"
-              @deactivate="onCardDeactivate"
-            />
-          </div>
-        </div>
-
-        <!-- Centre gap: headline is centred here via the section-wide overlay above. -->
-        <div class="min-w-[22rem] flex-1" aria-hidden="true" />
-
-        <div class="flex w-[15.5rem] shrink-0 flex-col gap-5 xl:w-[17rem]">
-          <div
-            v-for="card in rightCards"
-            :key="card.id"
-            data-reveal
-            class="reveal-init pointer-events-auto"
-          >
-            <ServiceCard
-              v-bind="card"
-              @activate="onCardActivate"
-              @deactivate="onCardDeactivate"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- Tablet: cards closer to the centre -->
-      <div
-        class="mt-8 hidden flex-1 items-center justify-center gap-4 md:flex lg:hidden"
-      >
-        <div class="flex w-[13.5rem] shrink-0 flex-col gap-4">
-          <div
-            v-for="card in leftCards"
-            :key="`md-${card.id}`"
-            data-reveal
-            class="reveal-init pointer-events-auto"
-          >
-            <ServiceCard
-              v-bind="card"
-              @activate="onCardActivate"
-              @deactivate="onCardDeactivate"
-            />
-          </div>
-        </div>
-
-        <div class="min-w-[14rem] flex-1" aria-hidden="true" />
-
-        <div class="flex w-[13.5rem] shrink-0 flex-col gap-4">
-          <div
-            v-for="card in rightCards"
-            :key="`md-${card.id}`"
-            data-reveal
-            class="reveal-init pointer-events-auto"
-          >
-            <ServiceCard
-              v-bind="card"
-              @activate="onCardActivate"
-              @deactivate="onCardDeactivate"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- Mobile: cards below the centre -->
-      <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 md:hidden">
-        <div
-          v-for="card in allCards"
-          :key="`sm-${card.id}`"
-          data-reveal
-          class="reveal-init pointer-events-auto"
-        >
-          <ServiceCard v-bind="card" />
-        </div>
-      </div>
-
-      <!-- CTAs -->
-      <div
-        data-reveal
-        class="reveal-init pointer-events-auto mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
-      >
-        <BaseButton href="#projekte" variant="primary">
-          Projekte ansehen
-        </BaseButton>
-        <BaseButton href="#kontakt" variant="secondary">
-          Kontakt aufnehmen
-          <span
-            class="transition-transform duration-200 group-hover:translate-x-0.5"
-            aria-hidden="true"
-          >
-            →
-          </span>
-        </BaseButton>
-      </div>
-    </div>
+    </dl>
   </section>
 </template>

@@ -3,13 +3,11 @@ import { ref, watch } from 'vue'
 
 const navItems = [
   { label: 'Leistungen', href: '/#leistungen', external: false },
-  { label: 'Projekte', href: '/#projekte', external: false },
+  { label: 'Softwarecheck', href: '/#check', external: false },
   { label: 'Fallstudien', href: '/fallstudien', external: false },
   { label: 'Blog', href: '/blog', external: false },
-  { label: 'Agents', href: '/#agents', external: false },
-  { label: 'Templates', href: '/templates', external: false },
+  { label: 'Über mich', href: '/#ueber-mich', external: false },
   { label: 'CV', href: '/cv', external: true },
-  { label: 'Kontakt', href: '/#kontakt', external: false },
 ]
 
 const isMenuOpen = ref(false)
@@ -40,21 +38,21 @@ onBeforeUnmount(() => {
 
 <template>
   <header
-    class="fixed inset-x-0 top-0 z-50 border-b border-line bg-ink/60 backdrop-blur-xl"
+    class="fixed inset-x-0 top-0 z-50 border-b border-line bg-ink/95"
   >
     <div
       class="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between px-6"
     >
       <NuxtLink to="/" class="flex items-center gap-2.5 font-semibold" @click="closeMenu">
         <span
-          class="flex size-7 items-center justify-center rounded-lg border border-line bg-white/[0.04] text-xs font-bold tracking-tight text-fog shadow-[0_0_20px_-6px_rgba(255,255,255,0.5)] light:bg-black/[0.04] light:shadow-[0_0_20px_-6px_rgba(10,10,15,0.18)]"
+          class="flex size-7 items-center justify-center rounded-lg border border-line bg-ink-soft text-xs font-bold tracking-tight text-fog "
         >
           PT
         </span>
         <span class="text-[0.95rem] tracking-tight">Pavel Tyulnev</span>
       </NuxtLink>
 
-      <nav class="hidden items-center gap-9 text-sm text-muted md:flex">
+      <nav class="hidden items-center gap-7 text-sm text-muted lg:flex">
         <a
           v-for="item in navItems"
           :key="item.href"
@@ -69,15 +67,14 @@ onBeforeUnmount(() => {
         <ThemeToggle />
         <BaseButton
           href="/#kontakt"
-          variant="secondary"
           class="hidden h-10 px-5 text-sm sm:inline-flex"
         >
-          Gespräch vereinbaren
+          Kontakt
         </BaseButton>
 
         <button
           type="button"
-          class="flex size-9 shrink-0 items-center justify-center rounded-lg border border-line text-muted transition-colors duration-150 hover:border-line-strong hover:text-fog md:hidden"
+          class="flex size-9 shrink-0 items-center justify-center rounded-lg border border-line text-muted transition-colors duration-150 hover:border-line-strong hover:text-fog lg:hidden"
           :aria-expanded="isMenuOpen"
           aria-controls="mobile-nav"
           :aria-label="isMenuOpen ? 'Menü schließen' : 'Menü öffnen'"
@@ -124,7 +121,7 @@ onBeforeUnmount(() => {
       <nav
         v-if="isMenuOpen"
         id="mobile-nav"
-        class="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-ink/95 px-6 py-4 backdrop-blur-xl md:hidden"
+        class="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-ink px-6 py-4 lg:hidden"
       >
         <a
           v-for="item in navItems"

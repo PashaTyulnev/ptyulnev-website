@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useHead({
-  title: 'Pavel Tyulnev — Shopware 6 & individuelle Business-Software | Dresden',
+  title: 'Pavel Tyulnev — Abläufe digitalisieren, Shopware betreuen, Software übernehmen | Dresden',
   link: [{ rel: 'canonical', href: 'https://ptyulnev.de/' }],
   script: [
     {
@@ -19,7 +19,7 @@ useHead({
         },
         areaServed: ['Dresden', 'DE'],
         description:
-          'Softwareentwickler in Dresden. Shopware 6 als Schwerpunkt, dazu individuelle Business-Software, API-Integrationen und Automatisierung, Bugfixing und Performance-Optimierung.',
+          'Softwareentwickler in Dresden. Ich digitalisiere manuelle Abläufe, betreue Shopware-6-Shops und übernehme bestehende Software, wenn der bisherige Entwickler weg ist.',
         knowsAbout: [
           'Shopware 6',
           'Shopware Plugin-Entwicklung',
@@ -40,9 +40,12 @@ useHead({
 <template>
   <main>
     <HeroSection />
+    <ProblemsSection />
     <ServicesSection />
+    <CheckSection />
+    <ProcessSection />
     <ProjectsSection />
-    <TechSection />
+    <AboutSection />
     <AgentsSection />
     <ContactSection />
   </main>
