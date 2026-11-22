@@ -1,7 +1,11 @@
 <script setup lang="ts">
-useHead({
-  title: 'Datenschutzerklärung — Pavel Tyulnev',
+usePageSeo({
+  title: 'Datenschutzerklärung | Pavel Tyulnev',
+  description: 'Datenschutzerklärung von ptyulnev.de: welche Daten beim Besuch dieser Website verarbeitet werden, zu welchem Zweck und welche Rechte Sie dabei haben.',
+  path: '/datenschutz',
 })
+
+useSeoMeta({ robots: 'noindex, follow' })
 </script>
 
 <template>

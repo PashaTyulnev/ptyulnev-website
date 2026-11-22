@@ -1,8 +1,23 @@
 <script setup lang="ts">
+usePageSeo({
+  title: 'Softwareentwickler Dresden: individuelle Software & Shopware',
+  description: 'Individuelle Software für Dienstplanung, Zeiterfassung und Auswertungen, Schnittstellen und Shopware 6 – direkt aus Dresden. Bestandsaufnahme kostenlos.',
+  path: '/',
+})
+
 useHead({
-  title: 'Betriebsabläufe digitalisieren & individuelle Software | Pavel Tyulnev, Dresden',
-  link: [{ rel: 'canonical', href: 'https://ptyulnev.de/' }],
   script: [
+    {
+      // Lets Google show "Pavel Tyulnev" as the site name above the result.
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: SITE_NAME,
+        alternateName: ['ptyulnev.de', 'Pavel Tyulnev Softwareentwicklung'],
+        url: `${SITE_URL}/`,
+      }),
+    },
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify({

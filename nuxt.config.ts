@@ -18,16 +18,12 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Betriebsabläufe digitalisieren & individuelle Software | Pavel Tyulnev, Dresden',
+      title: 'Softwareentwickler Dresden: individuelle Software & Shopware',
       htmlAttrs: { lang: 'de' },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        {
-          name: 'description',
-          content:
-            'Softwareentwickler in Dresden: individuelle Software für Dienstplanung, Zeiterfassung und Auswertungen, Schnittstellen, Shopware-Entwicklung und Übernahme bestehender Software. Bestandsaufnahme kostenlos.',
-        },
+        { name: 'description', content: 'Individuelle Software für Dienstplanung, Zeiterfassung und Auswertungen, Schnittstellen und Shopware 6 – direkt aus Dresden. Bestandsaufnahme kostenlos.' },
         {
           name: 'keywords',
           content:
@@ -38,20 +34,7 @@ export default defineNuxtConfig({
           name: 'google-site-verification',
           content: 'oMKGQendz2vQPukT3BfJj6-DuvHD-CmfqF2cHTF6TjI',
         },
-        { property: 'og:type', content: 'website' },
         { property: 'og:locale', content: 'de_DE' },
-        { property: 'og:url', content: 'https://ptyulnev.de/' },
-        { property: 'og:site_name', content: 'Pavel Tyulnev' },
-        { property: 'og:image', content: 'https://ptyulnev.de/cv/profile_image.png' },
-        {
-          property: 'og:title',
-          content: 'Betriebsabläufe digitalisieren & individuelle Software | Pavel Tyulnev, Dresden',
-        },
-        {
-          property: 'og:description',
-          content:
-            'Softwareentwickler in Dresden: individuelle Software für Dienstplanung, Zeiterfassung und Auswertungen, Schnittstellen, Shopware-Entwicklung und Übernahme bestehender Software. Bestandsaufnahme kostenlos.',
-        },
       ],
       script: [
         {

@@ -20,6 +20,8 @@ export interface CaseStudy {
   solution: string
   result: string
   learnings: string
+  seoTitle: string
+  seoDescription: string
 }
 
 interface DirectusCaseStudy {
@@ -39,6 +41,8 @@ interface DirectusCaseStudy {
   solution?: string | null
   result?: string | null
   learnings?: string | null
+  seo_title?: string | null
+  seo_description?: string | null
 }
 
 const LIST_FIELDS = [
@@ -55,7 +59,16 @@ const LIST_FIELDS = [
   'metrics',
 ]
 
-const DETAIL_FIELDS = [...LIST_FIELDS, 'problem', 'investigation', 'solution', 'result', 'learnings']
+const DETAIL_FIELDS = [
+  ...LIST_FIELDS,
+  'problem',
+  'investigation',
+  'solution',
+  'result',
+  'learnings',
+  'seo_title',
+  'seo_description',
+]
 
 function mapCaseStudy(item: DirectusCaseStudy): CaseStudy {
   return {
@@ -75,6 +88,8 @@ function mapCaseStudy(item: DirectusCaseStudy): CaseStudy {
     solution: item.solution ?? '',
     result: item.result ?? '',
     learnings: item.learnings ?? '',
+    seoTitle: item.seo_title ?? '',
+    seoDescription: item.seo_description ?? '',
   }
 }
 

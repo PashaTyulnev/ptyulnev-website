@@ -15,14 +15,22 @@ function formatDate(date: string): string {
   }).format(new Date(date))
 }
 
+usePageSeo({
+  title: 'Blog: Notizen aus der Softwareentwicklung | Pavel Tyulnev',
+  description: 'Erfahrungen aus echten Projekten: Symfony, Shopware 6, API-Integrationen, Performance und individuelle Software für Betriebsabläufe – praxisnah erklärt.',
+  path: '/blog',
+})
+
 useHead({
-  title: 'Blog — Pavel Tyulnev',
-  link: [{ rel: 'canonical', href: 'https://ptyulnev.de/blog' }],
-  meta: [
+  script: [
     {
-      name: 'description',
-      content:
-        'Notizen zu Shopware 6, API-Integrationen, Performance und individueller Business-Software — aus echten Projekten.',
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(
+        breadcrumbJsonLd([
+          { name: 'Startseite', path: '/' },
+          { name: 'Blog', path: '/blog' },
+        ]),
+      ),
     },
   ],
 })

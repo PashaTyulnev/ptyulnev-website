@@ -30,10 +30,42 @@ const facts = computed(() =>
   ].filter((f) => f.value),
 )
 
+const path = `/fallstudien/${cs.value.slug}`
+const seoTitle = cs.value.seoTitle || cs.value.title
+const seoDescription = cs.value.seoDescription || toSnippet(cs.value.summary)
+
+usePageSeo({
+  title: seoTitle,
+  description: seoDescription,
+  path,
+  type: 'article',
+  publishedTime: cs.value.date,
+})
+
 useHead({
-  title: `${cs.value.title} — Fallstudie — Pavel Tyulnev`,
-  link: [{ rel: 'canonical', href: `https://ptyulnev.de/fallstudien/${cs.value.slug}` }],
-  meta: [{ name: 'description', content: cs.value.summary }],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify([
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: seoTitle,
+          description: seoDescription,
+          url: `${SITE_URL}${path}`,
+          ...(cs.value.date ? { datePublished: cs.value.date } : {}),
+          inLanguage: 'de-DE',
+          keywords: cs.value.techStack.join(', '),
+          author: { '@type': 'Person', name: SITE_NAME, url: `${SITE_URL}/` },
+        },
+        breadcrumbJsonLd([
+          { name: 'Startseite', path: '/' },
+          { name: 'Fallstudien', path: '/fallstudien' },
+          { name: cs.value.title, path },
+        ]),
+      ]),
+    },
+  ],
 })
 </script>
 

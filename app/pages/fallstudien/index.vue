@@ -18,14 +18,22 @@ const filtered = computed(() =>
     : caseStudies.value,
 )
 
+usePageSeo({
+  title: 'Fallstudien: gelöste Software-Probleme aus der Praxis',
+  description: 'Echte Fälle aus Projekten: Performance, Integrationen, Debugging und Automatisierung mit Symfony, Shopware und KI – mit Ausgangslage, Vorgehen und Ergebnis.',
+  path: '/fallstudien',
+})
+
 useHead({
-  title: 'Fallstudien — Pavel Tyulnev',
-  link: [{ rel: 'canonical', href: 'https://ptyulnev.de/fallstudien' }],
-  meta: [
+  script: [
     {
-      name: 'description',
-      content:
-        'Fallstudien aus der Praxis: Bugs, Performance-Probleme und Integrationen, die ich analysiert und gelöst habe — mit Vorgehen und Ergebnis.',
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(
+        breadcrumbJsonLd([
+          { name: 'Startseite', path: '/' },
+          { name: 'Fallstudien', path: '/fallstudien' },
+        ]),
+      ),
     },
   ],
 })

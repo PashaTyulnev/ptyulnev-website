@@ -6,6 +6,8 @@ export interface BlogPost {
   date: string
   readTime: string
   content: string
+  seoTitle: string
+  seoDescription: string
 }
 
 interface DirectusBlogPost {
@@ -16,9 +18,11 @@ interface DirectusBlogPost {
   date: string
   read_time: string | null
   content: string | null
+  seo_title?: string | null
+  seo_description?: string | null
 }
 
-const FIELDS = ['slug', 'title', 'excerpt', 'category', 'date', 'read_time', 'content']
+const FIELDS = ['slug', 'title', 'excerpt', 'category', 'date', 'read_time', 'content', 'seo_title', 'seo_description']
 
 function mapPost(post: DirectusBlogPost): BlogPost {
   return {
@@ -29,6 +33,8 @@ function mapPost(post: DirectusBlogPost): BlogPost {
     date: post.date,
     readTime: post.read_time ?? '',
     content: post.content ?? '',
+    seoTitle: post.seo_title ?? '',
+    seoDescription: post.seo_description ?? '',
   }
 }
 

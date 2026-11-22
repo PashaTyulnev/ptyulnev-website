@@ -14,9 +14,41 @@ const formattedDate = new Intl.DateTimeFormat('de-DE', {
   year: 'numeric',
 }).format(new Date(post.value.date))
 
+const path = `/blog/${post.value.slug}`
+const seoTitle = post.value.seoTitle || post.value.title
+const seoDescription = post.value.seoDescription || toSnippet(post.value.excerpt || post.value.content)
+
+usePageSeo({
+  title: seoTitle,
+  description: seoDescription,
+  path,
+  type: 'article',
+  publishedTime: post.value.date,
+})
+
 useHead({
-  title: `${post.value.title} — Pavel Tyulnev`,
-  link: [{ rel: 'canonical', href: `https://ptyulnev.de/blog/${post.value.slug}` }],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify([
+        {
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: seoTitle,
+          description: seoDescription,
+          url: `${SITE_URL}${path}`,
+          datePublished: post.value.date,
+          inLanguage: 'de-DE',
+          author: { '@type': 'Person', name: SITE_NAME, url: `${SITE_URL}/` },
+        },
+        breadcrumbJsonLd([
+          { name: 'Startseite', path: '/' },
+          { name: 'Blog', path: '/blog' },
+          { name: post.value.title, path },
+        ]),
+      ]),
+    },
+  ],
 })
 </script>
 
