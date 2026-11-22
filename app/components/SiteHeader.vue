@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 
 const navItems = [
   { label: 'Leistungen', href: '/#leistungen', external: false },
-  { label: 'Softwarecheck', href: '/#check', external: false },
+  { label: 'Bestandsaufnahme', href: '/#bestandsaufnahme', external: false },
   { label: 'Fallstudien', href: '/fallstudien', external: false },
   { label: 'Blog', href: '/blog', external: false },
   { label: 'Über mich', href: '/#ueber-mich', external: false },

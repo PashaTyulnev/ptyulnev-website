@@ -21,7 +21,7 @@ const stats = [
       Entwickler nicht mehr da ist.
     </p>
     <div class="mt-10 flex flex-col gap-3 sm:flex-row">
-      <BaseButton href="#check">Prozess- und Softwarecheck anfragen</BaseButton>
+      <BaseButton href="#bestandsaufnahme">Kostenlose Bestandsaufnahme</BaseButton>
       <BaseButton href="/fallstudien" variant="secondary">Fallstudien ansehen</BaseButton>
     </div>
 

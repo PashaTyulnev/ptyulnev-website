@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Pavel Tyulnev — Betriebsabläufe digitalisieren, individuelle Software, Shopware | Dresden',
+      title: 'Betriebsabläufe digitalisieren & individuelle Software | Pavel Tyulnev, Dresden',
       htmlAttrs: { lang: 'de' },
       meta: [
         { charset: 'utf-8' },
@@ -26,12 +26,12 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Softwareentwickler in Dresden: Betriebsabläufe wie Dienstplanung, Zeiterfassung und Auswertungen digitalisieren, Daten verbinden, Shopware entwickeln und bestehende Software übernehmen.',
+            'Softwareentwickler in Dresden: individuelle Software für Dienstplanung, Zeiterfassung und Auswertungen, Schnittstellen, Shopware-Entwicklung und Übernahme bestehender Software. Bestandsaufnahme kostenlos.',
         },
         {
           name: 'keywords',
           content:
-            'Pavel Tyulnev, Entwickler Dresden, Softwareentwickler Dresden, Shopware 6 Spezialist, Shopware Plugin Entwicklung, individuelle Softwareentwicklung, API-Integration, Automatisierung, Bugfixing, Performance-Optimierung',
+            'Softwareentwickler Dresden, Betriebsabläufe digitalisieren, Digitalisierung Dresden, individuelle Softwareentwicklung, Dienstplanung Software, Zeiterfassung Software, Datenauswertung, API-Integration, Schnittstellen, Shopware Entwickler, Shopware Plugin Entwicklung, Software übernehmen, Pavel Tyulnev',
         },
         { name: 'theme-color', content: '#0d0f10' },
         {
@@ -40,14 +40,17 @@ export default defineNuxtConfig({
         },
         { property: 'og:type', content: 'website' },
         { property: 'og:locale', content: 'de_DE' },
+        { property: 'og:url', content: 'https://ptyulnev.de/' },
+        { property: 'og:site_name', content: 'Pavel Tyulnev' },
+        { property: 'og:image', content: 'https://ptyulnev.de/cv/profile_image.png' },
         {
           property: 'og:title',
-          content: 'Pavel Tyulnev — Betriebsabläufe digitalisieren, individuelle Software, Shopware | Dresden',
+          content: 'Betriebsabläufe digitalisieren & individuelle Software | Pavel Tyulnev, Dresden',
         },
         {
           property: 'og:description',
           content:
-            'Softwareentwickler in Dresden: Betriebsabläufe wie Dienstplanung, Zeiterfassung und Auswertungen digitalisieren, Daten verbinden, Shopware entwickeln und bestehende Software übernehmen.',
+            'Softwareentwickler in Dresden: individuelle Software für Dienstplanung, Zeiterfassung und Auswertungen, Schnittstellen, Shopware-Entwicklung und Übernahme bestehender Software. Bestandsaufnahme kostenlos.',
         },
       ],
       script: [

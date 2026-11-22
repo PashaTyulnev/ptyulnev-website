@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const steps = [
-  { title: 'Kurzes Gespräch', text: 'Sie schildern den Ablauf oder das Problem. Wir klären, ob ein Check sinnvoll ist.' },
-  { title: 'Check', text: 'Ich schaue mir Prozess, System oder Code an und schreibe meine Einschätzung auf.' },
-  { title: 'Angebot', text: 'Sie bekommen einen klaren Lösungsvorschlag mit Festpreis für die Umsetzung.' },
+  { title: 'Kurzes Gespräch', text: 'Sie schildern, wo es hakt. Wir vereinbaren einen Termin für die Bestandsaufnahme.' },
+  { title: 'Bestandsaufnahme', text: 'Kostenlos: Ich schaue mir Abläufe, Programme und Daten genau an und sage ehrlich, was sinnvoll ist.' },
+  { title: 'Angebot', text: 'Wenn Sie möchten, bekommen Sie einen klaren Vorschlag mit Preis für die Umsetzung. Ohne Verpflichtung.' },
   { title: 'Umsetzung', text: 'Ich setze um, übergebe sauber und betreue das System auf Wunsch weiter.' },
 ]
 </script>
